@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("../node_modules/@ant-design/icons-svg/lib/asn/SkypeFilled.js"),o=require("../components/AntdIcon.js"),e=require("solid-js");function u(t){return e.createComponent(o.default,e.mergeProps(t,{icon:r.default}))}exports.default=u;

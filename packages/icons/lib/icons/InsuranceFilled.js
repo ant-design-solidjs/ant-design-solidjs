@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("../node_modules/@ant-design/icons-svg/lib/asn/InsuranceFilled.js"),n=require("../components/AntdIcon.js"),e=require("solid-js");function u(r){return e.createComponent(n.default,e.mergeProps(r,{icon:t.default}))}exports.default=u;

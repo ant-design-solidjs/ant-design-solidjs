@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("../node_modules/@ant-design/icons-svg/lib/asn/FileExclamationFilled.js"),o=require("../components/AntdIcon.js"),e=require("solid-js");function i(t){return e.createComponent(o.default,e.mergeProps(t,{icon:l.default}))}exports.default=i;

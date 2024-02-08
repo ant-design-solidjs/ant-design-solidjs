@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("../node_modules/@ant-design/icons-svg/lib/asn/TaobaoCircleFilled.js"),t=require("../components/AntdIcon.js"),e=require("solid-js");function l(o){return e.createComponent(t.default,e.mergeProps(o,{icon:r.default}))}exports.default=l;

@@ -1,0 +1,11 @@
+import r from "../node_modules/@ant-design/icons-svg/lib/asn/AlipayCircleOutlined.mjs";
+import e from "../components/AntdIcon.mjs";
+import { createComponent as t, mergeProps as i } from "solid-js";
+function f(o) {
+  return t(e, i(o, {
+    icon: r
+  }));
+}
+export {
+  f as default
+};

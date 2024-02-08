@@ -1,0 +1,24 @@
+{
+    "name": "@ant-design-solidjs/icons",
+    "main": "./lib/index.js",
+    "module": "./es/index.mjs",
+    "type": "module",
+    "scripts": {
+        "generate": "bun run script/generate.ts --target=icon",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "@types/lodash": "^4.14.202",
+        "lodash": "^4.17.21"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0",
+        "solid-js": "^1.8.14"
+    },
+    "dependencies": {
+        "@ant-design/colors": "^7.0.2",
+        "@ant-design/icons-svg": "^4.4.2",
+        "clsx": "^2.1.0"
+    }
+}

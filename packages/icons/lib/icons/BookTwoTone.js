@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("../node_modules/@ant-design/icons-svg/lib/asn/BookTwoTone.js"),r=require("../components/AntdIcon.js"),e=require("solid-js");function n(o){return e.createComponent(r.default,e.mergeProps(o,{icon:t.default}))}exports.default=n;

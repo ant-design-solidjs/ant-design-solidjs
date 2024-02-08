@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const r=require("../node_modules/@ant-design/icons-svg/lib/asn/SignalFilled.js"),l=require("../components/AntdIcon.js"),e=require("solid-js");function n(t){return e.createComponent(l.default,e.mergeProps(t,{icon:r.default}))}exports.default=n;

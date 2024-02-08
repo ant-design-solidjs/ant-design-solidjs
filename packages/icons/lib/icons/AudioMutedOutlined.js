@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("../node_modules/@ant-design/icons-svg/lib/asn/AudioMutedOutlined.js"),o=require("../components/AntdIcon.js"),e=require("solid-js");function r(t){return e.createComponent(o.default,e.mergeProps(t,{icon:u.default}))}exports.default=r;

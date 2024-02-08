@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("../node_modules/@ant-design/icons-svg/lib/asn/SplitCellsOutlined.js"),r=require("../components/AntdIcon.js"),e=require("solid-js");function u(t){return e.createComponent(r.default,e.mergeProps(t,{icon:l.default}))}exports.default=u;

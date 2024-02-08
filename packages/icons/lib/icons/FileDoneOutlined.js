@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const n=require("../node_modules/@ant-design/icons-svg/lib/asn/FileDoneOutlined.js"),o=require("../components/AntdIcon.js"),e=require("solid-js");function r(t){return e.createComponent(o.default,e.mergeProps(t,{icon:n.default}))}exports.default=r;
