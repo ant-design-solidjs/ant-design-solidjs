@@ -1,8 +1,13 @@
 {
     "name": "@ant-design-solidjs/icons",
+    "version": "0.0.0-beta.4",
     "main": "./lib/index.js",
     "module": "./es/index.mjs",
     "type": "module",
+    "files": [
+        "es",
+        "lib"
+    ],
     "scripts": {
         "generate": "bun run script/generate.ts --target=icon",
         "build": "vite build"

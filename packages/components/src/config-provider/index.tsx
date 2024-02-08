@@ -21,20 +21,22 @@
 // import defaultSeedToken from '../theme/themes/seed';
 import type {
     //     BadgeConfig,
-    //     ButtonConfig,
+    ButtonConfig,
     //     ComponentStyleConfig,
     ConfigConsumerProps,
     CSPConfig,
     DirectionType,
     //     DrawerConfig,
-    //     FlexConfig,
+    FlexConfig,
     //     ModalConfig,
     //     PopupOverflow,
     //     Theme,
-    //     ThemeConfig,
+    ThemeConfig,
     //     WaveConfig,
 } from './context';
 import { ConfigConsumer, ConfigContext, defaultIconPrefixCls } from './context';
+import { JSX } from 'solid-js';
+import { SizeType } from './SizeContext.tsx';
 // import { registerTheme } from './cssVariables';
 // import type { RenderEmptyHandler } from './defaultRenderEmpty';
 // import { DisabledContextProvider } from './DisabledContext';
@@ -73,7 +75,7 @@ export {
     type CSPConfig,
     type DirectionType,
     //     type RenderEmptyHandler,
-    //     type ThemeConfig,
+    type ThemeConfig,
 };
 //
 // export const configConsumerProps = [
@@ -99,84 +101,84 @@ export {
 //     'button',
 // ];
 //
-// export interface ConfigProviderProps {
-//     getTargetContainer?: () => HTMLElement | Window;
-//     getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement;
-//     prefixCls?: string;
-//     iconPrefixCls?: string;
-//     children?: JSX.Element;
-//     renderEmpty?: RenderEmptyHandler;
-//     csp?: CSPConfig;
-//     autoInsertSpaceInButton?: boolean;
-//     // form?: ComponentStyleConfig & Pick<FormProps, 'requiredMark' | 'colon' | 'scrollToFirstError' | 'validateMessages'>;
-//     // input?: ComponentStyleConfig & Pick<InputProps, 'autoComplete' | 'classNames' | 'styles'>;
-//     // select?: ComponentStyleConfig & Pick<SelectProps, 'showSearch'>;
-//     // pagination?: ComponentStyleConfig & Pick<PaginationProps, 'showSizeChanger'>;
-//     // locale?: Locale;
-//     componentSize?: SizeType;
-//     componentDisabled?: boolean;
-//     direction?: DirectionType;
-//     // space?: Pick<SpaceProps, 'size' | 'className' | 'classNames' | 'style' | 'styles'>;
-//     virtual?: boolean;
-//     popupMatchSelectWidth?: boolean;
-//     // popupOverflow?: PopupOverflow;
-//     // theme?: ThemeConfig;
-//     // warning?: WarningContextProps;
-//     // alert?: ComponentStyleConfig;
-//     // anchor?: ComponentStyleConfig;
-//     // button?: ButtonConfig;
-//     // calendar?: ComponentStyleConfig;
-//     // carousel?: ComponentStyleConfig;
-//     // cascader?: ComponentStyleConfig;
-//     // collapse?: ComponentStyleConfig;
-//     // divider?: ComponentStyleConfig;
-//     // drawer?: DrawerConfig;
-//     // typography?: ComponentStyleConfig;
-//     // skeleton?: ComponentStyleConfig;
-//     // spin?: ComponentStyleConfig;
-//     // segmented?: ComponentStyleConfig;
-//     // statistic?: ComponentStyleConfig;
-//     // steps?: ComponentStyleConfig;
-//     // image?: ComponentStyleConfig;
-//     // layout?: ComponentStyleConfig;
-//     // list?: ComponentStyleConfig;
-//     // mentions?: ComponentStyleConfig;
-//     // modal?: ModalConfig;
-//     // progress?: ComponentStyleConfig;
-//     // result?: ComponentStyleConfig;
-//     // slider?: ComponentStyleConfig;
-//     // breadcrumb?: ComponentStyleConfig;
-//     // menu?: ComponentStyleConfig;
-//     // checkbox?: ComponentStyleConfig;
-//     // descriptions?: ComponentStyleConfig;
-//     // empty?: ComponentStyleConfig;
-//     // badge?: BadgeConfig;
-//     // radio?: ComponentStyleConfig;
-//     // rate?: ComponentStyleConfig;
-//     // switch?: ComponentStyleConfig;
-//     // transfer?: ComponentStyleConfig;
-//     // avatar?: ComponentStyleConfig;
-//     // message?: ComponentStyleConfig;
-//     // tag?: ComponentStyleConfig;
-//     // table?: ComponentStyleConfig;
-//     // card?: ComponentStyleConfig;
-//     // tabs?: ComponentStyleConfig & Pick<TabsProps, 'indicator' | 'indicatorSize'>;
-//     // timeline?: ComponentStyleConfig;
-//     // timePicker?: ComponentStyleConfig;
-//     // upload?: ComponentStyleConfig;
-//     // notification?: ComponentStyleConfig;
-//     // tree?: ComponentStyleConfig;
-//     // colorPicker?: ComponentStyleConfig;
-//     // datePicker?: ComponentStyleConfig;
-//     // rangePicker?: ComponentStyleConfig;
-//     // dropdown?: ComponentStyleConfig;
-//     // flex?: FlexConfig;
-//     /**
-//      * Wave is special component which only patch on the effect of component interaction.
-//      */
-//     // wave?: WaveConfig;
-// }
-//
+export interface ConfigProviderProps {
+    getTargetContainer?: () => HTMLElement | Window;
+    getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement;
+    prefixCls?: string;
+    iconPrefixCls?: string;
+    children?: JSX.Element;
+    //     renderEmpty?: RenderEmptyHandler;
+    csp?: CSPConfig;
+    autoInsertSpaceInButton?: boolean;
+    //     // form?: ComponentStyleConfig & Pick<FormProps, 'requiredMark' | 'colon' | 'scrollToFirstError' | 'validateMessages'>;
+    //     // input?: ComponentStyleConfig & Pick<InputProps, 'autoComplete' | 'classNames' | 'styles'>;
+    //     // select?: ComponentStyleConfig & Pick<SelectProps, 'showSearch'>;
+    //     // pagination?: ComponentStyleConfig & Pick<PaginationProps, 'showSizeChanger'>;
+    //     // locale?: Locale;
+    componentSize?: SizeType;
+    componentDisabled?: boolean;
+    direction?: DirectionType;
+    //     // space?: Pick<SpaceProps, 'size' | 'className' | 'classNames' | 'style' | 'styles'>;
+    //     virtual?: boolean;
+    //     popupMatchSelectWidth?: boolean;
+    //     // popupOverflow?: PopupOverflow;
+    theme?: ThemeConfig;
+    //     // warning?: WarningContextProps;
+    //     // alert?: ComponentStyleConfig;
+    //     // anchor?: ComponentStyleConfig;
+    button?: ButtonConfig;
+    //     // calendar?: ComponentStyleConfig;
+    //     // carousel?: ComponentStyleConfig;
+    //     // cascader?: ComponentStyleConfig;
+    //     // collapse?: ComponentStyleConfig;
+    //     // divider?: ComponentStyleConfig;
+    //     // drawer?: DrawerConfig;
+    //     // typography?: ComponentStyleConfig;
+    //     // skeleton?: ComponentStyleConfig;
+    //     // spin?: ComponentStyleConfig;
+    //     // segmented?: ComponentStyleConfig;
+    //     // statistic?: ComponentStyleConfig;
+    //     // steps?: ComponentStyleConfig;
+    //     // image?: ComponentStyleConfig;
+    //     // layout?: ComponentStyleConfig;
+    //     // list?: ComponentStyleConfig;
+    //     // mentions?: ComponentStyleConfig;
+    //     // modal?: ModalConfig;
+    //     // progress?: ComponentStyleConfig;
+    //     // result?: ComponentStyleConfig;
+    //     // slider?: ComponentStyleConfig;
+    //     // breadcrumb?: ComponentStyleConfig;
+    //     // menu?: ComponentStyleConfig;
+    //     // checkbox?: ComponentStyleConfig;
+    //     // descriptions?: ComponentStyleConfig;
+    //     // empty?: ComponentStyleConfig;
+    //     // badge?: BadgeConfig;
+    //     // radio?: ComponentStyleConfig;
+    //     // rate?: ComponentStyleConfig;
+    //     // switch?: ComponentStyleConfig;
+    //     // transfer?: ComponentStyleConfig;
+    //     // avatar?: ComponentStyleConfig;
+    //     // message?: ComponentStyleConfig;
+    //     // tag?: ComponentStyleConfig;
+    //     // table?: ComponentStyleConfig;
+    //     // card?: ComponentStyleConfig;
+    //     // tabs?: ComponentStyleConfig & Pick<TabsProps, 'indicator' | 'indicatorSize'>;
+    //     // timeline?: ComponentStyleConfig;
+    //     // timePicker?: ComponentStyleConfig;
+    //     // upload?: ComponentStyleConfig;
+    //     // notification?: ComponentStyleConfig;
+    //     // tree?: ComponentStyleConfig;
+    //     // colorPicker?: ComponentStyleConfig;
+    //     // datePicker?: ComponentStyleConfig;
+    //     // rangePicker?: ComponentStyleConfig;
+    //     // dropdown?: ComponentStyleConfig;
+    flex?: FlexConfig;
+    //     /**
+    //      * Wave is special component which only patch on the effect of component interaction.
+    //      */
+    //     // wave?: WaveConfig;
+}
+
 // interface ProviderChildrenProps extends ConfigProviderProps {
 //     parentContext: ConfigConsumerProps;
 //     legacyLocale: Locale;

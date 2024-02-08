@@ -1,7 +1,7 @@
-import Button from './views/button/basic';
+import { Router } from '@solidjs/router';
+import { routes } from './router';
 
 function App() {
-    return <Button />;
+    return <Router>{routes}</Router>;
 }
-
 export default App;

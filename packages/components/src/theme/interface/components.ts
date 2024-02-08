@@ -1,5 +1,5 @@
 import type { ComponentToken as WaveToken } from '../../_util/wave/style';
-// import type { ComponentToken as AffixComponentToken } from '../../affix/style';
+import type { ComponentToken as AffixComponentToken } from '../../affix/style';
 // import type { ComponentToken as AlertComponentToken } from '../../alert/style';
 // import type { ComponentToken as AnchorComponentToken } from '../../anchor/style';
 // import type { ComponentToken as AppComponentToken } from '../../app/style';
@@ -17,14 +17,14 @@ import type { ComponentToken as ButtonComponentToken } from '../../button/style'
 // import type { ComponentToken as ColorPickerComponentToken } from '../../color-picker/style';
 // import type { ComponentToken as DatePickerComponentToken } from '../../date-picker/style';
 // import type { ComponentToken as DescriptionsComponentToken } from '../../descriptions/style';
-// import type { ComponentToken as DividerComponentToken } from '../../divider/style';
+import type { ComponentToken as DividerComponentToken } from '../../divider/style';
 // import type { ComponentToken as DrawerComponentToken } from '../../drawer/style';
 // import type { ComponentToken as DropdownComponentToken } from '../../dropdown/style';
 // import type { ComponentToken as EmptyComponentToken } from '../../empty/style';
-// import type { ComponentToken as FlexComponentToken } from '../../flex/style';
+import type { ComponentToken as FlexComponentToken } from '../../flex/style';
 import type { ComponentToken as FloatButtonComponentToken } from '../../float-button/style';
 // import type { ComponentToken as FormComponentToken } from '../../form/style';
-// import type { ComponentToken as GridComponentToken } from '../../grid/style';
+import type { ComponentToken as GridComponentToken } from '../../grid/style';
 // import type { ComponentToken as ImageComponentToken } from '../../image/style';
 // import type { ComponentToken as InputNumberComponentToken } from '../../input-number/style';
 // import type { ComponentToken as InputComponentToken } from '../../input/style';
@@ -65,7 +65,7 @@ import type { ComponentToken as FloatButtonComponentToken } from '../../float-bu
 // import type { ComponentToken as UploadComponentToken } from '../../upload/style';
 //
 export interface ComponentTokenMap {
-    //     Affix?: AffixComponentToken;
+    Affix?: AffixComponentToken;
     //     Alert?: AlertComponentToken;
     //     Anchor?: AnchorComponentToken;
     //     Avatar?: AvatarComponentToken;
@@ -81,14 +81,14 @@ export interface ComponentTokenMap {
     //     Collapse?: CollapseComponentToken;
     //     DatePicker?: DatePickerComponentToken;
     //     Descriptions?: DescriptionsComponentToken;
-    //     Divider?: DividerComponentToken;
+    Divider?: DividerComponentToken;
     //     Drawer?: DrawerComponentToken;
     //     Dropdown?: DropdownComponentToken;
     //     Empty?: EmptyComponentToken;
-    //     Flex?: FlexComponentToken;
+    Flex?: FlexComponentToken;
     FloatButton?: FloatButtonComponentToken;
     //     Form?: FormComponentToken;
-    //     Grid?: GridComponentToken;
+    Grid?: GridComponentToken;
     //     Image?: ImageComponentToken;
     //     Input?: InputComponentToken;
     //     InputNumber?: InputNumberComponentToken;

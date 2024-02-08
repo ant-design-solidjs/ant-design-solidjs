@@ -7,11 +7,10 @@
         "./packages/*"
     ],
     "scripts": {
-        "dev": "bunx --bun vite",
-        "build": "bunx --bun vite build",
-        "preview": "bunx --bun vite preview"
+        "doc:dev": "vite"
     },
     "dependencies": {
+        "@solidjs/router": "^0.11.5",
         "@ant-design/colors": "^7.0.2",
         "@ant-design/icons-svg": "^4.4.2",
         "@ctrl/tinycolor": "^4.0.3",

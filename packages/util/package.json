@@ -1,11 +1,22 @@
 {
     "name": "@ant-design-solidjs/util",
-    "module": "index.ts",
     "type": "module",
+    "private": false,
+    "version": "0.0.0-beta.1",
+    "main": "./lib/index.js",
+    "module": "./es/index.mjs",
+    "files": [
+        "es",
+        "lib"
+    ],
+    "scripts": {
+        "build": "vite build"
+    },
     "devDependencies": {
         "@types/bun": "latest"
     },
     "peerDependencies": {
-        "typescript": "^5.3.3"
+        "typescript": "^5.3.3",
+        "solid-js": "^1.8.14"
     }
 }

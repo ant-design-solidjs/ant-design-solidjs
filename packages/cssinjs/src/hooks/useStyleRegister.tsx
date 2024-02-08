@@ -398,13 +398,7 @@ export default function useStyleRegister(
             styleNode = <Empty />;
         } else {
             styleNode = (
-                <style
-                    {...{
-                        [ATTR_TOKEN]: cachedTokenKey,
-                        [ATTR_MARK]: cachedStyleId,
-                    }}
-                    innerHTML={{ __html: cachedStyleStr }}
-                />
+                <style {...{ [ATTR_TOKEN]: cachedTokenKey, [ATTR_MARK]: cachedStyleId }} innerHTML={cachedStyleStr} />
             );
         }
 

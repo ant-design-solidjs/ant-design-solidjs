@@ -3,7 +3,7 @@ import type { ShowWaveEffect } from '../_util/wave/interface';
 // import type { BadgeProps } from '../badge';
 import type { ButtonProps } from '../button';
 // import type { DrawerProps } from '../drawer';
-// import type { FlexProps } from '../flex/interface';
+import type { FlexProps } from '../flex/interface';
 // import type { FormProps } from '../form/Form';
 // import type { InputProps } from '../input';
 // import type { Locale } from '../locale';
@@ -60,7 +60,7 @@ export interface ThemeConfig {
 }
 
 export interface ComponentStyleConfig {
-    className?: string;
+    class?: string;
     style?: JSX.CSSProperties;
 }
 
@@ -72,7 +72,7 @@ export type ButtonConfig = ComponentStyleConfig & Pick<ButtonProps, 'classes' | 
 
 // export type DrawerConfig = ComponentStyleConfig & Pick<DrawerProps, 'classNames' | 'styles'>;
 
-// export type FlexConfig = ComponentStyleConfig & Pick<FlexProps, 'vertical'>;
+export type FlexConfig = ComponentStyleConfig & Pick<FlexProps, 'vertical'>;
 
 export type PopupOverflow = 'viewport' | 'scroll';
 
@@ -104,7 +104,7 @@ export interface ConfigConsumerProps {
     // alert?: ComponentStyleConfig;
     // anchor?: ComponentStyleConfig;
     button?: ButtonConfig;
-    // divider?: ComponentStyleConfig;
+    divider?: ComponentStyleConfig;
     // drawer?: DrawerConfig;
     // calendar?: ComponentStyleConfig;
     // carousel?: ComponentStyleConfig;
@@ -149,7 +149,7 @@ export interface ConfigConsumerProps {
     // datePicker?: ComponentStyleConfig;
     // rangePicker?: ComponentStyleConfig;
     // dropdown?: ComponentStyleConfig;
-    // flex?: FlexConfig;
+    flex?: FlexConfig;
     wave?: WaveConfig;
     // warning?: WarningContextProps;
 }
