@@ -1,19 +1,21 @@
-// import type { WarningContextProps } from '../_util/warning';
+import type { WarningContextProps } from '../_util/warning';
 import type { ShowWaveEffect } from '../_util/wave/interface';
 // import type { BadgeProps } from '../badge';
 import type { ButtonProps } from '../button';
 // import type { DrawerProps } from '../drawer';
 import type { FlexProps } from '../flex/interface';
 // import type { FormProps } from '../form/Form';
-// import type { InputProps } from '../input';
+import type { InputProps } from '../input';
 // import type { Locale } from '../locale';
 // import type { ModalProps } from '../modal';
 // import type { PaginationProps } from '../pagination';
 // import type { SelectProps } from '../select';
-// import type { SpaceProps } from '../space';
+import type { SpaceProps } from '../space';
 // import type { TabsProps } from '../tabs';
 import type { AliasToken, MappingAlgorithm, OverrideToken } from '../theme/interface';
 import { createContext, JSX } from 'solid-js';
+import { AlertProps } from '../alert';
+import type { ArgsProps } from '../notification/interface';
 // import type { RenderEmptyHandler } from './defaultRenderEmpty';
 
 export const defaultIconPrefixCls = 'anticon';
@@ -64,15 +66,42 @@ export interface ComponentStyleConfig {
     style?: JSX.CSSProperties;
 }
 
-// export type ModalConfig = ComponentStyleConfig & Pick<ModalProps, 'classNames' | 'styles'>;
-//
-// export type BadgeConfig = ComponentStyleConfig & Pick<BadgeProps, 'classNames' | 'styles'>;
+// export interface TableConfig extends ComponentStyleConfig {
+//     expandable?: {
+//         expandIcon?: NonNullable<TableProps['expandable']>['expandIcon'];
+//     };
+// }
+
+export interface ImageConfig extends ComponentStyleConfig {
+    preview?: Partial<Record<'closeIcon', JSX.Element>>;
+}
+
+// export type TourConfig = Pick<TourProps, 'closeIcon'>;
+
+// export type ModalConfig = ComponentStyleConfig & Pick<ModalProps, 'clsx' | 'styles' | 'closeIcon'>;
+
+// export type TabsConfig = ComponentStyleConfig & Pick<TabsProps, 'indicator' | 'indicatorSize' | 'moreIcon' | 'addIcon'>;
+
+export type AlertConfig = ComponentStyleConfig & Pick<AlertProps, 'closeIcon'>;
+
+// export type BadgeConfig = ComponentStyleConfig & Pick<BadgeProps, 'clsx' | 'styles'>;
 
 export type ButtonConfig = ComponentStyleConfig & Pick<ButtonProps, 'classes' | 'styles'>;
 
-// export type DrawerConfig = ComponentStyleConfig & Pick<DrawerProps, 'classNames' | 'styles'>;
+export type NotificationConfig = ComponentStyleConfig & Pick<ArgsProps, 'closeIcon'>;
+
+// export type TagConfig = ComponentStyleConfig & Pick<TagProps, 'closeIcon'>;
+
+// export interface CardConfig extends ComponentStyleConfig {
+//     clsx?: CardProps['clsx'];
+//     styles: CardProps['styles'];
+// }
+
+// export type DrawerConfig = ComponentStyleConfig & Pick<DrawerProps, 'classes' | 'styles' | 'closeIcon'>;
 
 export type FlexConfig = ComponentStyleConfig & Pick<FlexProps, 'vertical'>;
+
+// export type TransferConfig = ComponentStyleConfig & Pick<TransferProps, 'selectionsIcon'>;
 
 export type PopupOverflow = 'viewport' | 'scroll';
 
@@ -90,19 +119,19 @@ export interface ConfigConsumerProps {
     // renderEmpty?: RenderEmptyHandler;
     csp?: CSPConfig;
     autoInsertSpaceInButton?: boolean;
-    // input?: ComponentStyleConfig & Pick<InputProps, 'autoComplete' | 'classNames' | 'styles'>;
+    input?: ComponentStyleConfig & Pick<InputProps, 'autoComplete' | 'classes' | 'styles'>;
     // pagination?: ComponentStyleConfig & Pick<PaginationProps, 'showSizeChanger'>;
     // locale?: Locale;
     direction?: DirectionType;
-    // space?: Pick<SpaceProps, 'size' | 'className' | 'classNames' | 'style' | 'styles'>;
+    space?: Pick<SpaceProps, 'size' | 'class' | 'classes' | 'style' | 'styles'>;
     // virtual?: boolean;
     // popupMatchSelectWidth?: boolean;
     // popupOverflow?: PopupOverflow;
     // form?: ComponentStyleConfig & Pick<FormProps, 'requiredMark' | 'colon' | 'scrollToFirstError' | 'validateMessages'>;
     // theme?: ThemeConfig;
     // select?: ComponentStyleConfig & Pick<SelectProps, 'showSearch'>;
-    // alert?: ComponentStyleConfig;
-    // anchor?: ComponentStyleConfig;
+    alert?: AlertConfig;
+    anchor?: ComponentStyleConfig;
     button?: ButtonConfig;
     divider?: ComponentStyleConfig;
     // drawer?: DrawerConfig;
@@ -143,7 +172,7 @@ export interface ConfigConsumerProps {
     // timeline?: ComponentStyleConfig;
     // timePicker?: ComponentStyleConfig;
     // upload?: ComponentStyleConfig;
-    // notification?: ComponentStyleConfig;
+    notification?: ComponentStyleConfig;
     // tree?: ComponentStyleConfig;
     // colorPicker?: ComponentStyleConfig;
     // datePicker?: ComponentStyleConfig;
@@ -151,7 +180,7 @@ export interface ConfigConsumerProps {
     // dropdown?: ComponentStyleConfig;
     flex?: FlexConfig;
     wave?: WaveConfig;
-    // warning?: WarningContextProps;
+    warning?: WarningContextProps;
 }
 
 const defaultGetPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {

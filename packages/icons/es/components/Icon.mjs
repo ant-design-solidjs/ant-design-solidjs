@@ -1,5 +1,5 @@
-import { use as w, spread as a, insert as l, template as d, Dynamic as C } from "../node_modules/solid-js/web/dist/web.mjs";
-import { clsx as p } from "../node_modules/clsx/dist/clsx.mjs";
+import { use as w, spread as a, insert as l, template as d, Dynamic as C } from "../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/web/dist/web.mjs";
+import { clsx as p } from "../node_modules/.pnpm/clsx@2.1.0/node_modules/clsx/dist/clsx.mjs";
 import { composeRef as I } from "@ant-design-solidjs/util";
 import y from "./Context.mjs";
 import { warning as m, useInsertStyles as $, svgBaseProps as S } from "../utils.mjs";

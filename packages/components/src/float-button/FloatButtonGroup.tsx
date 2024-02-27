@@ -11,7 +11,7 @@ import {
 } from 'solid-js';
 import CloseOutlined from '@ant-design-solidjs/icons/es/icons/CloseOutlined';
 import FileTextOutlined from '@ant-design-solidjs/icons/es/icons/FileTextOutlined';
-import classNames from 'clsx';
+import clsx from 'clsx';
 import CSSMotion from '../motion';
 import { useMergedState } from '@ant-design-solidjs/util';
 
@@ -52,14 +52,14 @@ const FloatButtonGroup: Component<FloatButtonGroupProps> = _props => {
     const groupPrefixCls = `${prefixCls}-group`;
 
     const groupCls = createMemo(() => {
-        return classNames(groupPrefixCls, hashId, cssVarCls, rootCls, props.class, {
+        return clsx(groupPrefixCls, hashId, cssVarCls, rootCls, props.class, {
             [`${groupPrefixCls}-rtl`]: direction === 'rtl',
             [`${groupPrefixCls}-${props.shape}`]: props.shape,
             [`${groupPrefixCls}-${props.shape}-shadow`]: !props.trigger,
         });
     });
 
-    const wrapperCls = classNames(hashId, `${groupPrefixCls}-wrap`);
+    const wrapperCls = clsx(hashId, `${groupPrefixCls}-wrap`);
 
     const [open, setOpen] = useMergedState(false, { value: props.open });
 
@@ -121,8 +121,8 @@ const FloatButtonGroup: Component<FloatButtonGroupProps> = _props => {
                 <Show when={props.trigger && ['click', 'hover'].includes(props.trigger)} fallback={props.children}>
                     <>
                         <CSSMotion visible={open} motionName={`${groupPrefixCls}-wrap`}>
-                            {({ className: motionClassName }) => (
-                                <div class={classNames(motionClassName, wrapperCls)}>{props.children}</div>
+                            {({ className: motionClass }) => (
+                                <div class={clsx(motionClass, wrapperCls)}>{props.children}</div>
                             )}
                         </CSSMotion>
                         <FloatButton

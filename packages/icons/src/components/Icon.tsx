@@ -1,5 +1,5 @@
 // Seems this is used for iconFont
-import classNames from 'clsx';
+import clsx from 'clsx';
 import { composeRef } from '@ant-design-solidjs/util';
 import Context from './Context';
 
@@ -50,9 +50,9 @@ const Icon = (_props: IconComponentProps) => {
 
     const { prefixCls = 'anticon', rootClassName } = useContext(Context);
 
-    const classString = classNames(rootClassName, prefixCls, props.class);
+    const classString = clsx(rootClassName, prefixCls, props.class);
 
-    const svgClassString = classNames({
+    const svgClassString = clsx({
         [`${prefixCls}-spin`]: !!props.spin,
     });
 

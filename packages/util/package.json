@@ -12,9 +12,7 @@
     "scripts": {
         "build": "vite build"
     },
-    "devDependencies": {
-        "@types/bun": "latest"
-    },
+    "devDependencies": {},
     "peerDependencies": {
         "typescript": "^5.3.3",
         "solid-js": "^1.8.14"

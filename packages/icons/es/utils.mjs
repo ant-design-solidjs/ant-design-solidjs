@@ -1,60 +1,57 @@
-import { Dynamic as c } from "./node_modules/solid-js/web/dist/web.mjs";
-import "./node_modules/@ant-design/colors/es/index.mjs";
+import { Dynamic as s } from "./node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/web/dist/web.mjs";
+import "./node_modules/.pnpm/@ant-design_colors@7.0.2/node_modules/@ant-design/colors/es/index.mjs";
 import { warning as l, extractRef as f, getShadowRoot as m, updateCSS as g } from "@ant-design-solidjs/util";
-import { useContext as p, onMount as d, createMemo as u, createComponent as a, mergeProps as h, For as b } from "solid-js";
-import y from "./components/Context.mjs";
-import C from "./node_modules/@ant-design/colors/es/generate.mjs";
-function w(e) {
-  return e.replace(/-(.)/g, (n, t) => t.toUpperCase());
+import { useContext as p, onMount as u, createMemo as d, createComponent as a, mergeProps as h, For as y } from "solid-js";
+import b from "./components/Context.mjs";
+import C from "./node_modules/.pnpm/@ant-design_colors@7.0.2/node_modules/@ant-design/colors/es/generate.mjs";
+function w(n) {
+  return n.replace(/-(.)/g, (e, t) => t.toUpperCase());
 }
-function I(e, n) {
-  l(e, `[@ant-design/icons] ${n}`);
+function I(n, e) {
+  l(n, `[@ant-design/icons] ${e}`);
 }
-function R(e) {
-  return typeof e == "object" && typeof e.name == "string" && typeof e.theme == "string" && (typeof e.icon == "object" || typeof e.icon == "function");
+function R(n) {
+  return typeof n == "object" && typeof n.name == "string" && typeof n.theme == "string" && (typeof n.icon == "object" || typeof n.icon == "function");
 }
-function s(e = {}) {
-  return Object.keys(e).reduce((n, t) => {
-    const i = e[t];
+function c(n = {}) {
+  return Object.keys(n).reduce((e, t) => {
+    const i = n[t];
     switch (t) {
-      case "class":
-        n.className = i, delete n.class;
-        break;
       default:
-        delete n[t], n[w(t)] = i;
+        delete e[t], e[w(t)] = i;
     }
-    return n;
+    return e;
   }, {});
 }
-function x(e, n, t) {
-  const i = u(() => t ? {
-    key: n,
-    ...s(e.attrs),
+function x(n, e, t) {
+  const i = d(() => t ? {
+    key: e,
+    ...c(n.attrs),
     ...t
   } : {
-    key: n,
-    ...s(e.attrs)
+    key: e,
+    ...c(n.attrs)
   });
-  return a(c, h({
+  return a(s, h({
     get component() {
-      return e.tag;
+      return n.tag;
     }
   }, i, {
     get children() {
-      return a(b, {
+      return a(y, {
         get each() {
-          return e.children || [];
+          return n.children || [];
         },
-        children: (o, r) => x(o, `${n}-${e.tag}-${r()}`)
+        children: (o, r) => x(o, `${e}-${n.tag}-${r()}`)
       });
     }
   }));
 }
-function D(e) {
-  return C(e)[0];
+function D(n) {
+  return C(n)[0];
 }
-function M(e) {
-  return e ? Array.isArray(e) ? e : [e] : [];
+function M(n) {
+  return n ? Array.isArray(n) ? n : [n] : [];
 }
 const B = {
   width: "1em",
@@ -62,7 +59,7 @@ const B = {
   fill: "currentColor",
   "aria-hidden": "true",
   focusable: "false"
-}, k = `
+}, S = `
 .anticon {
   display: inline-block;
   color: inherit;
@@ -116,17 +113,17 @@ const B = {
     transform: rotate(360deg);
   }
 }
-`, F = (e) => {
+`, F = (n) => {
   const {
-    csp: n,
+    csp: e,
     prefixCls: t
-  } = p(y);
-  let i = k;
-  t && (i = i.replace(/anticon/g, t)), d(() => {
-    const o = f(e), r = m(o);
+  } = p(b);
+  let i = S;
+  t && (i = i.replace(/anticon/g, t)), u(() => {
+    const o = f(n), r = m(o);
     g(i, "@ant-design-icons", {
       prepend: !0,
-      csp: n,
+      csp: e,
       attachTo: r
     });
   });
@@ -134,9 +131,9 @@ const B = {
 export {
   x as generate,
   D as getSecondaryColor,
-  k as iconStyles,
+  S as iconStyles,
   R as isIconDefinition,
-  s as normalizeAttrs,
+  c as normalizeAttrs,
   M as normalizeTwoToneColors,
   B as svgBaseProps,
   F as useInsertStyles,

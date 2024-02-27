@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 import { fillRef } from '@ant-design-solidjs/util';
 import { Context } from './context.tsx';
 import DomWrapper from './DomWrapper';
@@ -7,7 +7,7 @@ import { isActive } from './hooks/useStepQueue';
 import type { MotionEndEventHandler, MotionEventHandler, MotionPrepareEventHandler } from './interface';
 import { STATUS_NONE, STEP_PREPARE, STEP_START } from './interface';
 import { getTransitionName, supportTransition } from './util/motion';
-import { Component, createMemo, createSignal, JSX, mergeProps, useContext } from 'solid-js';
+import { Component, createEffect, createMemo, createSignal, JSX, mergeProps, useContext } from 'solid-js';
 
 export type CSSMotionConfig =
     | boolean
@@ -45,7 +45,7 @@ export interface CSSMotionProps {
      * Remove element when motion end. This will not work when `forceRender` is set.
      */
     removeOnLeave?: boolean;
-    leavedClassName?: string;
+    leavedClass?: string;
     /** @private Used by CSSMotionList. Do not use in your production. */
     eventProps?: object;
 
@@ -120,9 +120,11 @@ export function genCSSMotion(config: CSSMotionConfig): Component<CSSMotionProps 
         // Record whether content has rendered
         // Will return null for un-rendered even when `removeOnLeave={false}`
         let renderedRef = mergedVisible();
-        if (mergedVisible()) {
-            renderedRef = true;
-        }
+        createEffect(() => {
+            if (mergedVisible()) {
+                renderedRef = true;
+            }
+        });
 
         // ====================== Refs ======================
         const setNodeRef = (node: any) => {
@@ -144,9 +146,9 @@ export function genCSSMotion(config: CSSMotionConfig): Component<CSSMotionProps 
                 // Stable children
                 if (mergedVisible()) {
                     motionChildren = props.children({ ...mergedProps }, setNodeRef);
-                } else if (!props.removeOnLeave && renderedRef && props.leavedClassName) {
-                    motionChildren = props.children({ ...mergedProps, className: props.leavedClassName }, setNodeRef);
-                } else if (props.forceRender || (!props.removeOnLeave && !props.leavedClassName)) {
+                } else if (!props.removeOnLeave && renderedRef && props.leavedClass) {
+                    motionChildren = props.children({ ...mergedProps, class: props.leavedClass }, setNodeRef);
+                } else if (props.forceRender || (!props.removeOnLeave && !props.leavedClass)) {
                     motionChildren = props.children({ ...mergedProps, style: { display: 'none' } }, setNodeRef);
                 } else {
                     motionChildren = null;
@@ -163,11 +165,10 @@ export function genCSSMotion(config: CSSMotionConfig): Component<CSSMotionProps 
                 }
 
                 const motionCls = getTransitionName(props.motionName, `${status()}-${statusSuffix}`);
-
                 motionChildren = props.children(
                     {
                         ...mergedProps,
-                        className: classNames(getTransitionName(props.motionName, status()), {
+                        class: clsx(getTransitionName(props.motionName, status()), {
                             [motionCls]: motionCls && statusSuffix,
                             [props.motionName as string]: typeof props.motionName === 'string',
                         }),

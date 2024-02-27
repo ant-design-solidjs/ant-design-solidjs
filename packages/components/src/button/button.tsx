@@ -130,7 +130,7 @@ const Button = (_props: ButtonProps) => {
 
     const [hasTwoCNChar, setHasTwoCNChar] = createSignal<boolean>(false);
 
-    const { compactSize, compactItemClassnames } = useCompactItemContext(prefixCls(), direction);
+    const { compactSize, compactItemClasses } = useCompactItemContext(prefixCls(), direction);
 
     const loadingOrDelay = createMemo<LoadingConfigType>(() => getLoadingConfig(props.loading));
 
@@ -178,13 +178,13 @@ const Button = (_props: ButtonProps) => {
     });
 
     const classes = createMemo(() => {
-        const sizeClassNameMap = { large: 'lg', small: 'sm', middle: undefined };
+        const sizeClassMap = { large: 'lg', small: 'sm', middle: undefined };
 
         const groupSize = useContext(GroupSizeContext);
 
         const sizeFullName = useSize(ctxSize => props.size ?? compactSize ?? groupSize ?? ctxSize);
 
-        const sizeCls = sizeFullName ? sizeClassNameMap[sizeFullName()] || '' : '';
+        const sizeCls = sizeFullName ? sizeClassMap[sizeFullName()] || '' : '';
 
         const iconType = innerLoading ? 'loading' : props.icon;
 
@@ -205,10 +205,10 @@ const Button = (_props: ButtonProps) => {
                 [`${prefixCls()}-dangerous`]: !!props.danger,
                 [`${prefixCls()}-rtl`]: direction === 'rtl',
             },
-            compactItemClassnames(),
+            compactItemClasses(),
             props.class,
             props.rootClass,
-            button?.className,
+            button?.class,
         );
     });
 
@@ -288,7 +288,7 @@ const Button = (_props: ButtonProps) => {
             {kids()}
 
             {/* Styles: compact */}
-            {!!compactItemClassnames() && <CompactCmp prefixCls={prefixCls()} />}
+            {!!compactItemClasses() && <CompactCmp prefixCls={prefixCls()} />}
         </button>
     );
 

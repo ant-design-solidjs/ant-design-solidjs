@@ -1,15 +1,10 @@
-import classNames from 'clsx';
-// import toArray from 'rc-util/lib/Children/toArray';
-// import * as React from 'react';
-//
+import clsx from 'clsx';
 import type { DirectionType } from '../config-provider';
-// import { ConfigContext } from '../config-provider';
+import { ConfigContext } from '../config-provider';
 import type { SizeType } from '../config-provider/SizeContext';
-//
-// import useSize from '../config-provider/hooks/useSize';
-// import useStyle from './style';
-//
-import { createContext, createMemo, useContext } from 'solid-js';
+import useSize from '../config-provider/hooks/useSize';
+import useStyle from './style';
+import { children, Component, createContext, createMemo, JSX, Show, splitProps, useContext } from 'solid-js';
 
 export interface SpaceCompactItemContextType {
     compactSize?: SizeType;
@@ -23,14 +18,14 @@ export const SpaceCompactItemContext = createContext<SpaceCompactItemContextType
 export const useCompactItemContext = (prefixCls: string, direction: DirectionType) => {
     const compactItemContext = useContext(SpaceCompactItemContext);
 
-    const compactItemClassnames = createMemo<string>(() => {
+    const compactItemClasses = createMemo<string>(() => {
         if (!compactItemContext) {
             return '';
         }
         const { compactDirection, isFirstItem, isLastItem } = compactItemContext;
         const separator = compactDirection === 'vertical' ? '-vertical-' : '-';
 
-        return classNames(`${prefixCls}-compact${separator}item`, {
+        return clsx(`${prefixCls}-compact${separator}item`, {
             [`${prefixCls}-compact${separator}first-item`]: isFirstItem,
             [`${prefixCls}-compact${separator}last-item`]: isLastItem,
             [`${prefixCls}-compact${separator}item-rtl`]: direction === 'rtl',
@@ -40,90 +35,87 @@ export const useCompactItemContext = (prefixCls: string, direction: DirectionTyp
     return {
         compactSize: compactItemContext?.compactSize,
         compactDirection: compactItemContext?.compactDirection,
-        compactItemClassnames,
+        compactItemClasses,
     };
 };
-//
-// export const NoCompactStyle: React.FC<React.PropsWithChildren<{}>> = props => (
-//     <SpaceCompactItemContext.Provider value={null}>{props.children}</SpaceCompactItemContext.Provider>
-// );
-//
-// export interface SpaceCompactProps extends React.HTMLAttributes<HTMLDivElement> {
-//     prefixCls?: string;
-//     size?: SizeType;
-//     direction?: 'horizontal' | 'vertical';
-//     block?: boolean;
-//     rootClassName?: string;
-// }
-//
-// const CompactItem: React.FC<React.PropsWithChildren<SpaceCompactItemContextType>> = _props => {
-//     const [props, otherProps] = splitProps(_props, ['children']);
-//     return <SpaceCompactItemContext.Provider value={otherProps}>{props.children}</SpaceCompactItemContext.Provider>;
-// };
-// const Compact: React.FC<SpaceCompactProps> = props => {
-//     const { getPrefixCls, direction: directionConfig } = React.useContext(ConfigContext);
-//
-//     const {
-//         size,
-//         direction,
-//         block,
-//         prefixCls: customizePrefixCls,
-//         className,
-//         rootClassName,
-//         children,
-//         ...restProps
-//     } = props;
-//
-//     const mergedSize = useSize(ctx => size ?? ctx);
-//
-//     const prefixCls = getPrefixCls('space-compact', customizePrefixCls);
-//     const [wrapCSSVar, hashId] = useStyle(prefixCls);
-//     const clx = classNames(
-//         prefixCls,
-//         hashId,
-//         {
-//             [`${prefixCls}-rtl`]: directionConfig === 'rtl',
-//             [`${prefixCls}-block`]: block,
-//             [`${prefixCls}-vertical`]: direction === 'vertical',
-//         },
-//         className,
-//         rootClassName,
-//     );
-//
-//     const compactItemContext = React.useContext(SpaceCompactItemContext);
-//
-//     const childNodes = toArray(children);
-//     const nodes = React.useMemo(
-//         () =>
-//             childNodes.map((child, i) => {
-//                 const key = (child && child.key) || `${prefixCls}-item-${i}`;
-//                 return (
-//                     <CompactItem
-//                         key={key}
-//                         compactSize={mergedSize}
-//                         compactDirection={direction}
-//                         isFirstItem={i === 0 && (!compactItemContext || compactItemContext?.isFirstItem)}
-//                         isLastItem={
-//                             i === childNodes.length - 1 && (!compactItemContext || compactItemContext?.isLastItem)
-//                         }
-//                     >
-//                         {child}
-//                     </CompactItem>
-//                 );
-//             }),
-//         [size, childNodes, compactItemContext],
-//     );
-//
-//     // =========================== Render ===========================
-//     if (childNodes.length === 0) {
-//         return null;
-//     }
-//
-//     return wrapCSSVar(
-//         <div class={clx} {...restProps}>
-//             {nodes}
-//         </div>,
-//     );
-// };
-//
-// export default Compact;
+
+export const NoCompactStyle: Component<{ children?: JSX.Element }> = props => (
+    <SpaceCompactItemContext.Provider value={null}>{props.children}</SpaceCompactItemContext.Provider>
+);
+
+export interface SpaceCompactProps extends JSX.HTMLAttributes<HTMLDivElement> {
+    prefixCls?: string;
+    size?: SizeType;
+    direction?: 'horizontal' | 'vertical';
+    block?: boolean;
+    rootClass?: string;
+}
+
+const CompactItem: Component<JSX.PropFsWithChildren<SpaceCompactItemContextType>> = _props => {
+    const [props, otherProps] = splitProps(_props, ['children']);
+    return <SpaceCompactItemContext.Provider value={otherProps}>{props.children}</SpaceCompactItemContext.Provider>;
+};
+
+const Compact: Component<SpaceCompactProps> = _props => {
+    const { getPrefixCls, direction: directionConfig } = useContext(ConfigContext);
+
+    const [props, restProps] = splitProps(_props, [
+        'prefixCls',
+        'direction',
+        'size',
+        'block',
+        'class',
+        'rootClass',
+        'children',
+    ]);
+
+    const mergedSize = useSize(ctx => props.size ?? ctx);
+
+    const prefixCls = getPrefixCls('space-compact', props.prefixCls);
+    const [wrapCSSVar, hashId] = useStyle(prefixCls);
+
+    const compactItemContext = useContext(SpaceCompactItemContext);
+
+    const childNodes = children(() => props.children).toArray();
+    const nodes = createMemo(() =>
+        childNodes.map((child, i) => {
+            // const key = (child && child.key) || `${prefixCls}-item-${i}`;
+            return (
+                <CompactItem
+                    compactSize={mergedSize}
+                    compactDirection={props.direction}
+                    isFirstItem={i === 0 && (!compactItemContext || compactItemContext?.isFirstItem)}
+                    isLastItem={i === childNodes.length - 1 && (!compactItemContext || compactItemContext?.isLastItem)}
+                >
+                    {child}
+                </CompactItem>
+            );
+        }),
+    );
+
+    // =========================== Render ===========================
+    return (
+        <Show when={childNodes.length > 0}>
+            {wrapCSSVar(
+                <div
+                    class={clsx(
+                        prefixCls,
+                        hashId,
+                        {
+                            [`${prefixCls}-rtl`]: directionConfig === 'rtl',
+                            [`${prefixCls}-block`]: props.block,
+                            [`${prefixCls}-vertical`]: props.direction === 'vertical',
+                        },
+                        props.class,
+                        props.rootClass,
+                    )}
+                    {...restProps}
+                >
+                    {nodes()}
+                </div>,
+            )}
+        </Show>
+    );
+};
+
+export default Compact;

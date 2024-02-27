@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 import { omit } from '@ant-design-solidjs/util';
 import { createResizeObserver } from '@solid-primitives/resize-observer';
 import throttleByAnimationFrame from '../_util/throttleByAnimationFrame';
@@ -219,9 +219,9 @@ export const Affix = (props: AffixProps) => {
 
     const [wrapCSSVar, hashId, cssVarCls] = useStyle(affixPrefixCls);
 
-    const rootCls = classNames(props.rootClass, hashId, affixPrefixCls, cssVarCls);
+    const rootCls = clsx(props.rootClass, hashId, affixPrefixCls, cssVarCls);
 
-    const mergedCls = classNames({ [rootCls]: affixStyle });
+    const mergedCls = clsx({ [rootCls]: affixStyle });
 
     let otherProps = omit(props, ['prefixCls', 'offsetTop', 'offsetBottom', 'target', 'onChange', 'rootClass']);
 

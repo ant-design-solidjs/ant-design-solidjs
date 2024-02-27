@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 
 import { devUseWarning } from '../_util/warning';
 import { ConfigContext } from '../config-provider';
@@ -49,7 +49,7 @@ export function ButtonGroup(_props: ButtonGroupProps) {
         <GroupSizeContext.Provider value={props.size}>
             <div
                 {...others}
-                class={classNames(
+                class={clsx(
                     prefixCls(),
                     {
                         [`${prefixCls()}-${sizeCls()}`]: sizeCls(),

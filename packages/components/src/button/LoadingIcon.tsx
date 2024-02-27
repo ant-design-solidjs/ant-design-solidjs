@@ -1,5 +1,5 @@
 import LoadingOutlined from '@ant-design-solidjs/icons/es/icons/LoadingOutlined';
-import classNames from 'clsx';
+import clsx from 'clsx';
 import CSSMotion from '../motion';
 import IconWrapper from './IconWrapper';
 import { Component, JSX, Show } from 'solid-js';
@@ -8,7 +8,7 @@ type InnerLoadingIconProps = {
     prefixCls: string;
     class?: string;
     style?: JSX.CSSProperties;
-    iconClassName?: string;
+    iconClass?: string;
     ref?: (node: any) => any;
 };
 
@@ -21,11 +21,11 @@ const InnerLoadingIcon = (props: InnerLoadingIconProps) => {
     return (
         <IconWrapper
             prefixCls={props.prefixCls}
-            class={classNames(`${props.prefixCls}-loading-icon`, props.class)}
+            class={clsx(`${props.prefixCls}-loading-icon`, props.class)}
             style={props.style}
             ref={bindRef}
         >
-            <LoadingOutlined class={props.iconClassName} />
+            <LoadingOutlined class={props.iconClass} />
         </IconWrapper>
     );
 };
@@ -75,7 +75,7 @@ const LoadingIcon: Component<LoadingIconProps> = props => {
                         class={props.class}
                         style={{ ...props.style, ...ps.style }}
                         ref={ref}
-                        iconClassName={ps.class}
+                        iconClass={ps.class}
                     />
                 )}
             </CSSMotion>

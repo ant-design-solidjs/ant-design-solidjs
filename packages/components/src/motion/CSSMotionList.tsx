@@ -1,8 +1,20 @@
 import type { CSSMotionProps } from './CSSMotion';
 import OriginCSSMotion from './CSSMotion';
-import type { KeyObject, Key } from './util/diff';
-import { STATUS_ADD, STATUS_KEEP, STATUS_REMOVED } from './util/diff';
-import { Component, createMemo, createSignal, For, JSX, mergeProps, Show, splitProps, ValidComponent } from 'solid-js';
+import { diffKeys, KeyObject, parseKeys } from './util/diff';
+import { STATUS_ADD, STATUS_KEEP, STATUS_REMOVED, STATUS_REMOVE } from './util/diff';
+import {
+    Component,
+    createEffect,
+    createMemo,
+    createSignal,
+    For,
+    JSX,
+    mergeProps,
+    Show,
+    splitProps,
+    untrack,
+    ValidComponent,
+} from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
 const MOTION_PROP_NAMES = [
@@ -16,7 +28,7 @@ const MOTION_PROP_NAMES = [
     'motionLeaveImmediately',
     'motionDeadline',
     'removeOnLeave',
-    'leavedClassName',
+    'leavedClass',
     'onAppearPrepare',
     'onAppearStart',
     'onAppearActive',
@@ -32,11 +44,11 @@ const MOTION_PROP_NAMES = [
 export interface CSSMotionListProps
     extends Omit<CSSMotionProps, 'onVisibleChanged' | 'children'>,
         Omit<JSX.HTMLAttributes<any>, 'children'> {
-    keys: (Key | { key: Key; [name: string]: any })[];
+    keys: (JSX.Key | { key: JSX.Key; [name: string]: any })[];
     component?: string | false | ValidComponent;
 
     /** This will always trigger after final visible changed. Even if no motion configured. */
-    onVisibleChanged?: (visible: boolean, info: { key: Key }) => void;
+    onVisibleChanged?: (visible: boolean, info: { key: JSX.Key }) => void;
     /** All motion leaves in the screen */
     onAllRemoved?: () => void;
     children?: (
@@ -58,7 +70,13 @@ export interface CSSMotionListProps
 export function genCSSMotionList(CSSMotion = OriginCSSMotion): Component<CSSMotionListProps> {
     function CSSMotionList(_props: CSSMotionListProps) {
         const ps = mergeProps({ component: 'div' }, _props);
-        const [props, restProps] = splitProps(ps, ['component', 'children', 'onVisibleChanged', 'onAllRemoved']);
+        const [props, restProps] = splitProps(ps, [
+            'component',
+            'children',
+            'onVisibleChanged',
+            'onAllRemoved',
+            'keys',
+        ]);
 
         const [keyEntities, setKeyEntities] = createSignal<KeyObject[]>([]);
 
@@ -68,11 +86,10 @@ export function genCSSMotionList(CSSMotion = OriginCSSMotion): Component<CSSMoti
                 motionProps[prop] = restProps[prop];
                 delete restProps[prop];
             });
-            delete restProps.keys;
             return motionProps;
         });
 
-        function removeKey(removeKey: Key) {
+        function removeKey(removeKey: JSX.Key) {
             const nextKeyEntities = keyEntities().map(entity => {
                 if (entity.key !== removeKey) return entity;
                 return {
@@ -85,35 +102,52 @@ export function genCSSMotionList(CSSMotion = OriginCSSMotion): Component<CSSMoti
             return nextKeyEntities.filter(({ status }) => status !== STATUS_REMOVED).length;
         }
 
-        const child = () => (
+        createEffect(() => {
+            if (!props.keys || props.keys.length === 0) return;
+            const parsedKeyObjects = parseKeys(props.keys);
+            const mixedKeyEntities = diffKeys(
+                untrack(() => keyEntities()),
+                parsedKeyObjects,
+            );
+            const keys = mixedKeyEntities.filter(entity => {
+                const prevEntity = untrack(() => keyEntities()).find(({ key }) => entity.key === key);
+                // Remove if already mark as removed
+                return !(prevEntity && prevEntity.status === STATUS_REMOVED && entity.status === STATUS_REMOVE);
+            });
+            setKeyEntities(keys);
+        });
+
+        const Child = () => (
             <For each={keyEntities()}>
-                {({ status, ...eventProps }, index) => (
-                    <CSSMotion
-                        {...motionProps()}
-                        visible={status === STATUS_ADD || status === STATUS_KEEP}
-                        eventProps={eventProps}
-                        onVisibleChanged={changedVisible => {
-                            props.onVisibleChanged?.(changedVisible, { key: eventProps.key });
+                {({ status, ...eventProps }, index) => {
+                    return (
+                        <CSSMotion
+                            {...motionProps()}
+                            visible={status === STATUS_ADD || status === STATUS_KEEP}
+                            eventProps={eventProps}
+                            onVisibleChanged={changedVisible => {
+                                props.onVisibleChanged?.(changedVisible, { key: eventProps.key });
 
-                            if (!changedVisible) {
-                                const restKeysCount = removeKey(eventProps.key);
+                                if (!changedVisible) {
+                                    const restKeysCount = removeKey(eventProps.key);
 
-                                if (restKeysCount === 0 && props.onAllRemoved) {
-                                    props.onAllRemoved();
+                                    if (restKeysCount === 0 && props.onAllRemoved) {
+                                        props.onAllRemoved();
+                                    }
                                 }
-                            }
-                        }}
-                    >
-                        {(props, ref) => props.children({ ...props, index: index() }, ref)}
-                    </CSSMotion>
-                )}
+                            }}
+                        >
+                            {(ps, ref) => props.children({ ...ps, index: index() }, ref)}
+                        </CSSMotion>
+                    );
+                }}
             </For>
         );
 
         return (
-            <Show when={props.component !== false} fallback={<>{child()}</>}>
+            <Show when={props.component !== false} fallback={<Child />}>
                 <Dynamic component={props.component as string} {...restProps}>
-                    {child()}
+                    <Child />
                 </Dynamic>
             </Show>
         );

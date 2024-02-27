@@ -1,0 +1,335 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  '@ant-design-solidjs/cssinjs':
+    specifier: ^0.0.0-beta.6
+    version: 0.0.0-beta.6(solid-js@1.8.15)(typescript@5.3.3)
+  '@ant-design-solidjs/icons':
+    specifier: ^0.0.0-beta.1
+    version: 0.0.0-beta.4(solid-js@1.8.15)(typescript@5.3.3)
+  '@ant-design-solidjs/util':
+    specifier: ^0.0.0-beta.1
+    version: 0.0.0-beta.1(solid-js@1.8.15)(typescript@5.3.3)
+  '@solid-primitives/resize-observer':
+    specifier: ^2.0.23
+    version: 2.0.23(solid-js@1.8.15)
+  '@solid-primitives/scroll':
+    specifier: ^2.0.21
+    version: 2.0.21(solid-js@1.8.15)
+  scroll-into-view-if-needed:
+    specifier: ^3.1.0
+    version: 3.1.0
+  solid-js:
+    specifier: ^1.8.14
+    version: 1.8.15
+  solid-motionone:
+    specifier: ^1.0.0
+    version: 1.0.0(solid-js@1.8.15)
+  typescript:
+    specifier: ^5.3.3
+    version: 5.3.3
+
+devDependencies:
+  '@types/bun':
+    specifier: latest
+    version: 1.0.7
+
+packages:
+
+  /@ant-design-solidjs/cssinjs@0.0.0-beta.6(solid-js@1.8.15)(typescript@5.3.3):
+    resolution: {integrity: sha512-qq5qTIke7Lm9IrmbMEHgijhhG9GMPXWCTODgvW5yBmiCBV4jDv0YlsxbYVdgmHZFGy+Ni/BI8C3+cP9RtUEQAw==}
+    peerDependencies:
+      solid-js: ^1.8.14
+      typescript: ^5.3.3
+    dependencies:
+      '@ant-design-solidjs/util': 0.0.0-beta.1(solid-js@1.8.15)(typescript@5.3.3)
+      '@emotion/hash': 0.9.1
+      '@emotion/unitless': 0.8.1
+      solid-js: 1.8.15
+      stylis: 4.3.1
+      typescript: 5.3.3
+    dev: false
+
+  /@ant-design-solidjs/icons@0.0.0-beta.4(solid-js@1.8.15)(typescript@5.3.3):
+    resolution: {integrity: sha512-0mixuZ3lSrdK0XKSW068DZc9/Rs2SQU/kaXZNuoZfLk0uD/f+nGbGyU7EeXl3waIwzqE1bUgs/bbUAttqtxZ5g==}
+    peerDependencies:
+      solid-js: ^1.8.14
+      typescript: ^5.0.0
+    dependencies:
+      '@ant-design/colors': 7.0.2
+      '@ant-design/icons-svg': 4.4.2
+      clsx: 2.1.0
+      solid-js: 1.8.15
+      typescript: 5.3.3
+    dev: false
+
+  /@ant-design-solidjs/util@0.0.0-beta.1(solid-js@1.8.15)(typescript@5.3.3):
+    resolution: {integrity: sha512-55ZL736LqU8Xm6X9+34D3ExCUwq8IAaCRTcUcM2tbuHk/K9ZwuV+fVCGYK3KR250yWmUaGYlpeN66MWelmq8xQ==}
+    peerDependencies:
+      solid-js: ^1.8.14
+      typescript: ^5.3.3
+    dependencies:
+      solid-js: 1.8.15
+      typescript: 5.3.3
+    dev: false
+
+  /@ant-design/colors@7.0.2:
+    resolution: {integrity: sha512-7KJkhTiPiLHSu+LmMJnehfJ6242OCxSlR3xHVBecYxnMW8MS/878NXct1GqYARyL59fyeFdKRxXTfvR9SnDgJg==}
+    dependencies:
+      '@ctrl/tinycolor': 3.6.1
+    dev: false
+
+  /@ant-design/icons-svg@4.4.2:
+    resolution: {integrity: sha512-vHbT+zJEVzllwP+CM+ul7reTEfBR0vgxFe7+lREAsAA7YGsYpboiq2sQNeQeRvh09GfQgs/GyFEvZpJ9cLXpXA==}
+    dev: false
+
+  /@ctrl/tinycolor@3.6.1:
+    resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
+    engines: {node: '>=10'}
+    dev: false
+
+  /@emotion/hash@0.9.1:
+    resolution: {integrity: sha512-gJB6HLm5rYwSLI6PQa+X1t5CFGrv1J1TWG+sOyMCeKz2ojaj6Fnl/rZEspogG+cvqbt4AE/2eIyD2QfLKTBNlQ==}
+    dev: false
+
+  /@emotion/unitless@0.8.1:
+    resolution: {integrity: sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ==}
+    dev: false
+
+  /@motionone/animation@10.17.0:
+    resolution: {integrity: sha512-ANfIN9+iq1kGgsZxs+Nz96uiNcPLGTXwfNo2Xz/fcJXniPYpaz/Uyrfa+7I5BPLxCP82sh7quVDudf1GABqHbg==}
+    dependencies:
+      '@motionone/easing': 10.17.0
+      '@motionone/types': 10.17.0
+      '@motionone/utils': 10.17.0
+      tslib: 2.6.2
+    dev: false
+
+  /@motionone/dom@10.17.0:
+    resolution: {integrity: sha512-cMm33swRlCX/qOPHWGbIlCl0K9Uwi6X5RiL8Ma6OrlJ/TP7Q+Np5GE4xcZkFptysFjMTi4zcZzpnNQGQ5D6M0Q==}
+    dependencies:
+      '@motionone/animation': 10.17.0
+      '@motionone/generators': 10.17.0
+      '@motionone/types': 10.17.0
+      '@motionone/utils': 10.17.0
+      hey-listen: 1.0.8
+      tslib: 2.6.2
+    dev: false
+
+  /@motionone/easing@10.17.0:
+    resolution: {integrity: sha512-Bxe2wSuLu/qxqW4rBFS5m9tMLOw+QBh8v5A7Z5k4Ul4sTj5jAOfZG5R0bn5ywmk+Fs92Ij1feZ5pmC4TeXA8Tg==}
+    dependencies:
+      '@motionone/utils': 10.17.0
+      tslib: 2.6.2
+    dev: false
+
+  /@motionone/generators@10.17.0:
+    resolution: {integrity: sha512-T6Uo5bDHrZWhIfxG/2Aut7qyWQyJIWehk6OB4qNvr/jwA/SRmixwbd7SOrxZi1z5rH3LIeFFBKK1xHnSbGPZSQ==}
+    dependencies:
+      '@motionone/types': 10.17.0
+      '@motionone/utils': 10.17.0
+      tslib: 2.6.2
+    dev: false
+
+  /@motionone/types@10.17.0:
+    resolution: {integrity: sha512-EgeeqOZVdRUTEHq95Z3t8Rsirc7chN5xFAPMYFobx8TPubkEfRSm5xihmMUkbaR2ErKJTUw3347QDPTHIW12IA==}
+    dev: false
+
+  /@motionone/utils@10.17.0:
+    resolution: {integrity: sha512-bGwrki4896apMWIj9yp5rAS2m0xyhxblg6gTB/leWDPt+pb410W8lYWsxyurX+DH+gO1zsQsfx2su/c1/LtTpg==}
+    dependencies:
+      '@motionone/types': 10.17.0
+      hey-listen: 1.0.8
+      tslib: 2.6.2
+    dev: false
+
+  /@solid-primitives/event-listener@2.3.1(solid-js@1.8.15):
+    resolution: {integrity: sha512-S1AfFYatOJ3g/ZUbGDoKplSGLTTfarQ3Mfd3F/fXb9SnzGtROtd+Y6yLkPVzK4AVw83r2wUSaS0GS6dg8izTEQ==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/utils': 6.2.2(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/props@3.1.9(solid-js@1.8.15):
+    resolution: {integrity: sha512-2MvjgxF0rwMR8BGq2onN9KhxF66bQhtFWdrEkO/qjy8I4wr/OQrhwgM9RP89/gtzOVPXUYKSxt2lkCk+JQpNJA==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/utils': 6.2.2(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/refs@1.0.6(solid-js@1.8.15):
+    resolution: {integrity: sha512-ruh4YdVMxThEVnvqbpeLXKojW442vpFU8q7dSKtElGOTa31aKOAkRb9BTbdaTwVjN4BEq79fiiYIXozJNl4dSw==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/utils': 6.2.2(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/resize-observer@2.0.23(solid-js@1.8.15):
+    resolution: {integrity: sha512-SgKRzRfy1oFbPSapmtF5H9VQcN66foQaQK3QTyzh4cihIG2k/UiVNjbC+el1nEDnSeAP7zTO4Xsf2UW8dc+aBw==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/event-listener': 2.3.1(solid-js@1.8.15)
+      '@solid-primitives/rootless': 1.4.3(solid-js@1.8.15)
+      '@solid-primitives/static-store': 0.0.6(solid-js@1.8.15)
+      '@solid-primitives/utils': 6.2.2(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/rootless@1.4.3(solid-js@1.8.15):
+    resolution: {integrity: sha512-IPsfUhKsqQOxLtRMQWK2EZAYbL9RKJMLBelLwpaXl9+oa1tl5aNvA6GHgrNrK+85oUhiYh7/OuogO18AuHepqQ==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/utils': 6.2.2(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/scroll@2.0.21(solid-js@1.8.15):
+    resolution: {integrity: sha512-ZzCMo13HIqbuGXnoJz2hTjh9P5j9g2g/5fSIGJ8FBvdhFIem4pyUv8fIW1WBoCsJpdKpMsi8jAgQ3KEJOomAsQ==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/event-listener': 2.3.1(solid-js@1.8.15)
+      '@solid-primitives/rootless': 1.4.3(solid-js@1.8.15)
+      '@solid-primitives/static-store': 0.0.6(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/static-store@0.0.6(solid-js@1.8.15):
+    resolution: {integrity: sha512-PtvkbbucbjT+9p95pksOciG9gOnCtJz4IUyAKX1Ld7YwI+QgtPTo0Wuxs8gNbNtLtoDv5PNv5t4YRzUyl0fwdg==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/utils': 6.2.2(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/transition-group@1.0.4(solid-js@1.8.15):
+    resolution: {integrity: sha512-9nPg6HYAmEi7riH0C2bSCVw/2asgGSzHuN0yFFYyK9JgmXqJgyeyA+6thZbj7GgUQMRhtBxpH8yG7N2nEh8ttA==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/utils@6.2.2(solid-js@1.8.15):
+    resolution: {integrity: sha512-11ypVbp987XxETeRqY5Y3OmmTpm8/jZqJXRvo6AyqBthzkvvjEdReuUMU2yVb+pwWGxfZpWHZ6EUCcGXUMhfwg==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      solid-js: 1.8.15
+    dev: false
+
+  /@types/bun@1.0.7:
+    resolution: {integrity: sha512-zaPoQi+uBaqy7BwAh6HQ5dSt6H95XeejCSGEukXHYO32xIPdzPXJjNzmCJ64TWCpM4+R7WyPMdCnkZyETAZfuw==}
+    dependencies:
+      bun-types: 1.0.28
+    dev: true
+
+  /@types/node@20.11.20:
+    resolution: {integrity: sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
+  /@types/ws@8.5.10:
+    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+    dependencies:
+      '@types/node': 20.11.20
+    dev: true
+
+  /bun-types@1.0.28:
+    resolution: {integrity: sha512-wQqbLYRM0YnsXZMFujbCr/9YxlEl51jshMXcJ2Y9wEuU7k6TKcX2KDh032k9oHfB1wH8/SleXboIsULMtFaAaA==}
+    dependencies:
+      '@types/node': 20.11.20
+      '@types/ws': 8.5.10
+    dev: true
+
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
+    engines: {node: '>=6'}
+    dev: false
+
+  /compute-scroll-into-view@3.1.0:
+    resolution: {integrity: sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==}
+    dev: false
+
+  /csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+    dev: false
+
+  /hey-listen@1.0.8:
+    resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+    dev: false
+
+  /scroll-into-view-if-needed@3.1.0:
+    resolution: {integrity: sha512-49oNpRjWRvnU8NyGVmUaYG4jtTkNonFZI86MmGRDqBphEK2EXT9gdEUoQPZhuBM8yWHxCWbobltqYO5M4XrUvQ==}
+    dependencies:
+      compute-scroll-into-view: 3.1.0
+    dev: false
+
+  /seroval-plugins@1.0.4(seroval@1.0.4):
+    resolution: {integrity: sha512-DQ2IK6oQVvy8k+c2V5x5YCtUa/GGGsUwUBNN9UqohrZ0rWdUapBFpNMYP1bCyRHoxOJjdKGl+dieacFIpU/i1A==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      seroval: ^1.0
+    dependencies:
+      seroval: 1.0.4
+    dev: false
+
+  /seroval@1.0.4:
+    resolution: {integrity: sha512-qQs/N+KfJu83rmszFQaTxcoJoPn6KNUruX4KmnmyD0oZkUoiNvJ1rpdYKDf4YHM05k+HOgCxa3yvf15QbVijGg==}
+    engines: {node: '>=10'}
+    dev: false
+
+  /solid-js@1.8.15:
+    resolution: {integrity: sha512-d0QP/efr3UVcwGgWVPveQQ0IHOH6iU7yUhc2piy8arNG8wxKmvUy1kFxyF8owpmfCWGB87usDKMaVnsNYZm+Vw==}
+    dependencies:
+      csstype: 3.1.3
+      seroval: 1.0.4
+      seroval-plugins: 1.0.4(seroval@1.0.4)
+    dev: false
+
+  /solid-motionone@1.0.0(solid-js@1.8.15):
+    resolution: {integrity: sha512-iHk/al5B3Yv9G7R8V90WHJNe5TjwR0QiQHTifLZZHj1rdegm6taqdBKGYfpTeND8ejnamJ6FK+UxHCRl/jYy1w==}
+    engines: {node: '>=18', pnpm: '>=8.12.0'}
+    peerDependencies:
+      solid-js: ^1.8.0
+    dependencies:
+      '@motionone/dom': 10.17.0
+      '@motionone/utils': 10.17.0
+      '@solid-primitives/props': 3.1.9(solid-js@1.8.15)
+      '@solid-primitives/refs': 1.0.6(solid-js@1.8.15)
+      '@solid-primitives/transition-group': 1.0.4(solid-js@1.8.15)
+      csstype: 3.1.3
+      solid-js: 1.8.15
+    dev: false
+
+  /stylis@4.3.1:
+    resolution: {integrity: sha512-EQepAV+wMsIaGVGX1RECzgrcqRRU/0sYOHkeLsZ3fzHaHXZy4DaOOX0vOlGQdlsjkh3mFHAIlVimpwAs4dslyQ==}
+    dev: false
+
+  /tslib@2.6.2:
+    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+    dev: false
+
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: false
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true

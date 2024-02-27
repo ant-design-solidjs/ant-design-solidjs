@@ -10,7 +10,6 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@types/bun": "latest",
         "@types/stylis": "^4.2.5"
     },
     "peerDependencies": {

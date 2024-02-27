@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 
 import type { Breakpoint, ScreenMap } from '../_util/responsiveObserver';
 import useResponsiveObserver, { responsiveArray } from '../_util/responsiveObserver';
@@ -136,17 +136,15 @@ const Row = (_props: RowProps) => {
 
     const [wrapCSSVar, hashId, cssVarCls] = useRowStyle(prefixCls);
 
-    const gutters = getGutter();
-
     const classes = createMemo(() => {
         const mergeAlign = useMergePropByScreen(props.align, curScreens());
         const mergeJustify = useMergePropByScreen(props.justify, curScreens());
-        return classNames(
+        return clsx(
             prefixCls,
             {
                 [`${prefixCls}-no-wrap`]: props.wrap === false,
-                [`${prefixCls}-${mergeJustify}`]: mergeJustify,
-                [`${prefixCls}-${mergeAlign}`]: mergeAlign,
+                [`${prefixCls}-${mergeJustify}`]: mergeJustify(),
+                [`${prefixCls}-${mergeAlign}`]: mergeAlign(),
                 [`${prefixCls}-rtl`]: direction === 'rtl',
             },
             props.class,
@@ -157,6 +155,7 @@ const Row = (_props: RowProps) => {
 
     const rowStyle = createMemo(() => {
         // Add gutter related style
+        const gutters = getGutter();
         const rowStyle: JSX.CSSProperties = {};
         const horizontalGutter = gutters[0] != null && gutters[0] > 0 ? gutters[0] / -2 : undefined;
 
@@ -172,6 +171,7 @@ const Row = (_props: RowProps) => {
     const rowContext = createMemo<RowContextState>(() => {
         // "gutters" is a new array in each rendering phase, it'll make 'React.useMemo' effectless.
         // So we deconstruct "gutters" variable here.
+        const gutters = getGutter();
         const [gutterH, gutterV] = gutters;
         return { gutter: [gutterH, gutterV] as [number, number], wrap: props.wrap };
     });

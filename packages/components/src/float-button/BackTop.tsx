@@ -1,5 +1,5 @@
 import VerticalAlignTopOutlined from '@ant-design-solidjs/icons/es/icons/VerticalAlignTopOutlined';
-import classNames from 'clsx';
+import clsx from 'clsx';
 import CSSMotion from '../motion';
 
 import getScroll from '../_util/getScroll';
@@ -69,7 +69,7 @@ const BackTop = (_props: BackTopProps) => {
 
     return (
         <CSSMotion visible={visible()} motionName={`${getPrefixCls()}-fade`}>
-            {({ className: motionClassName }, ref) => (
+            {({ class: motionClass }, ref) => (
                 <FloatButton
                     ref={el => (internalRef = el) && fillRef(ref, el)}
                     {...{
@@ -80,7 +80,7 @@ const BackTop = (_props: BackTopProps) => {
                         ...restProps,
                     }}
                     onClick={scrollToTop}
-                    class={classNames(props.class, motionClassName)}
+                    class={clsx(props.class, motionClass)}
                 />
             )}
         </CSSMotion>

@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 import { JSX, Ref } from 'solid-js';
 
 export type IconWrapperProps = {
@@ -11,7 +11,7 @@ export type IconWrapperProps = {
 
 const IconWrapper = (props: IconWrapperProps) => {
     return (
-        <span ref={props.ref} class={classNames(`${props.prefixCls}-icon`, props.class)} style={props.style}>
+        <span ref={props.ref} class={clsx(`${props.prefixCls}-icon`, props.class)} style={props.style}>
             {props.children}
         </span>
     );

@@ -1,5 +1,5 @@
 import FileTextOutlined from '@ant-design-solidjs/icons/es/icons/FileTextOutlined';
-import classNames from 'clsx';
+import clsx from 'clsx';
 import type { FloatButtonContentProps } from './interface';
 import { Component } from 'solid-js';
 
@@ -15,7 +15,7 @@ const FloatButtonContent: Component<FloatButtonContentProps> = props => {
             onFocus={props.onFocus}
             onMouseEnter={props.onMouseEnter}
             onMouseLeave={props.onMouseLeave}
-            class={classNames(props.class, `${props.prefixCls}-content`)}
+            class={clsx(props.class, `${props.prefixCls}-content`)}
         >
             {props.icon || props.description ? (
                 <>

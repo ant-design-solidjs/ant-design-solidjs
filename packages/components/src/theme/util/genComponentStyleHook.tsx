@@ -2,7 +2,7 @@ import { Component, JSX, useContext } from 'solid-js';
 import { CSSInterpolation, token2CSSVar, useCSSVarRegister, useStyleRegister } from '@ant-design-solidjs/cssinjs';
 import { warning } from '@ant-design-solidjs/util';
 
-import { ConfigContext } from '../../config-provider/context';
+import { ConfigContext } from '../../config-provider';
 import { genCommonStyle, genLinkStyle } from '../../style';
 import type { AliasToken, ComponentTokenMap, GlobalToken, OverrideToken, UseComponentStyleResult } from '../interface';
 import useToken, { ignore, unitless } from '../useToken';
@@ -310,7 +310,7 @@ const genCSSVarRegister = <C extends OverrideComponent>(
         return null;
     }
 
-    const useCSSVar = (rootCls: string) => {
+    return (rootCls: string) => {
         const [, , , , cssVar] = useToken();
 
         return [
@@ -326,8 +326,6 @@ const genCSSVarRegister = <C extends OverrideComponent>(
             cssVar?.key,
         ] as const;
     };
-
-    return useCSSVar;
 };
 
 export const genStyleHooks = <C extends OverrideComponent>(

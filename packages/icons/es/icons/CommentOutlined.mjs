@@ -1,4 +1,4 @@
-import r from "../node_modules/@ant-design/icons-svg/lib/asn/CommentOutlined.mjs";
+import r from "../node_modules/.pnpm/@ant-design_icons-svg@4.4.2/node_modules/@ant-design/icons-svg/lib/asn/CommentOutlined.mjs";
 import t from "../components/AntdIcon.mjs";
 import { createComponent as e, mergeProps as m } from "solid-js";
 function p(o) {

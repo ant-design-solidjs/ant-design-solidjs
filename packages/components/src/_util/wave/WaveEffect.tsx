@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 import CSSMotion from '../../motion';
 import { fillRef, raf } from '@ant-design-solidjs/util';
 import { getTargetWaveColor } from './util';
@@ -110,18 +110,18 @@ const WaveEffect: Component<WaveEffectProps> = props => {
                     return false;
                 }}
             >
-                {({ className: motionClassName }, ref) => {
+                {({ class: motionClass }, ref) => {
                     return (
                         <div
                             ref={el => (divRef = el) && fillRef(ref, el)}
-                            class={classNames(
+                            class={clsx(
                                 props.class,
                                 {
                                     'wave-quick':
                                         (props.component === 'Checkbox' || props.component === 'Radio') &&
                                         props.target?.classList.contains(TARGET_CLS),
                                 },
-                                motionClassName,
+                                motionClass,
                             )}
                             style={waveStyle()}
                         />

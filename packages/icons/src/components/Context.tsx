@@ -2,7 +2,7 @@ import { createContext } from 'solid-js';
 
 export interface IconContextProps {
     prefixCls?: string;
-    rootClassName?: string;
+    rootClass?: string;
     csp?: { nonce?: string };
 }
 

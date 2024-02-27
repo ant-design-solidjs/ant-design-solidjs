@@ -118,12 +118,12 @@ export default function useStatus(
                 return SkipStep;
             }
 
-            return onPrepare(element);
+            return onPrepare(element());
         }
 
         // Rest step is sync update
         if (step() in eventHandlers()) {
-            setStyle(eventHandlers[step()]?.(element, null) || null);
+            setStyle(eventHandlers[step()]?.(element(), null) || null);
         }
 
         if (step() === STEP_ACTIVE) {

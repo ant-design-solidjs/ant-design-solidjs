@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 
 import { devUseWarning } from '../_util/warning';
 import { ConfigContext } from '../config-provider';
@@ -45,7 +45,7 @@ export const Divider: Component<DividerProps> = _props => {
         const hasChildren = !!props.children;
         const hasCustomMarginLeft = props.orientation === 'left' && props.orientationMargin != null;
         const hasCustomMarginRight = props.orientation === 'right' && props.orientationMargin != null;
-        return classNames(
+        return clsx(
             prefixCls,
             divider?.class,
             hashId,

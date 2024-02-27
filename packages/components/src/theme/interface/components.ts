@@ -1,8 +1,8 @@
 import type { ComponentToken as WaveToken } from '../../_util/wave/style';
 import type { ComponentToken as AffixComponentToken } from '../../affix/style';
-// import type { ComponentToken as AlertComponentToken } from '../../alert/style';
-// import type { ComponentToken as AnchorComponentToken } from '../../anchor/style';
-// import type { ComponentToken as AppComponentToken } from '../../app/style';
+import type { ComponentToken as AlertComponentToken } from '../../alert/style';
+import type { ComponentToken as AnchorComponentToken } from '../../anchor/style';
+import type { ComponentToken as AppComponentToken } from '../../app/style';
 // import type { ComponentToken as AvatarComponentToken } from '../../avatar/style';
 // import type { ComponentToken as BackTopComponentToken } from '../../back-top/style';
 // import type { ComponentToken as BadgeComponentToken } from '../../badge/style';
@@ -27,14 +27,14 @@ import type { ComponentToken as FloatButtonComponentToken } from '../../float-bu
 import type { ComponentToken as GridComponentToken } from '../../grid/style';
 // import type { ComponentToken as ImageComponentToken } from '../../image/style';
 // import type { ComponentToken as InputNumberComponentToken } from '../../input-number/style';
-// import type { ComponentToken as InputComponentToken } from '../../input/style';
+import type { ComponentToken as InputComponentToken } from '../../input/style';
 // import type { ComponentToken as LayoutComponentToken } from '../../layout/style';
 // import type { ComponentToken as ListComponentToken } from '../../list/style';
 // import type { ComponentToken as MentionsComponentToken } from '../../mentions/style';
 // import type { ComponentToken as MenuComponentToken } from '../../menu/style';
-// import type { ComponentToken as MessageComponentToken } from '../../message/style';
+import type { ComponentToken as MessageComponentToken } from '../../message/style';
 // import type { ComponentToken as ModalComponentToken } from '../../modal/style';
-// import type { ComponentToken as NotificationComponentToken } from '../../notification/style';
+import type { ComponentToken as NotificationComponentToken } from '../../notification/style';
 // import type { ComponentToken as PaginationComponentToken } from '../../pagination/style';
 // import type { ComponentToken as PopconfirmComponentToken } from '../../popconfirm/style';
 // import type { ComponentToken as PopoverComponentToken } from '../../popover/style';
@@ -47,7 +47,7 @@ import type { ComponentToken as GridComponentToken } from '../../grid/style';
 // import type { ComponentToken as SelectComponentToken } from '../../select/style';
 // import type { ComponentToken as SkeletonComponentToken } from '../../skeleton/style';
 // import type { ComponentToken as SliderComponentToken } from '../../slider/style';
-// import type { ComponentToken as SpaceComponentToken } from '../../space/style';
+import type { ComponentToken as SpaceComponentToken } from '../../space/style';
 // import type { ComponentToken as SpinComponentToken } from '../../spin/style';
 // import type { ComponentToken as StatisticComponentToken } from '../../statistic/style';
 // import type { ComponentToken as StepsComponentToken } from '../../steps/style';
@@ -66,8 +66,8 @@ import type { ComponentToken as GridComponentToken } from '../../grid/style';
 //
 export interface ComponentTokenMap {
     Affix?: AffixComponentToken;
-    //     Alert?: AlertComponentToken;
-    //     Anchor?: AnchorComponentToken;
+    Alert?: AlertComponentToken;
+    Anchor?: AnchorComponentToken;
     //     Avatar?: AvatarComponentToken;
     //     BackTop?: BackTopComponentToken;
     //     Badge?: BadgeComponentToken;
@@ -90,12 +90,12 @@ export interface ComponentTokenMap {
     //     Form?: FormComponentToken;
     Grid?: GridComponentToken;
     //     Image?: ImageComponentToken;
-    //     Input?: InputComponentToken;
+    Input?: InputComponentToken;
     //     InputNumber?: InputNumberComponentToken;
     //     Layout?: LayoutComponentToken;
     //     List?: ListComponentToken;
     //     Mentions?: MentionsComponentToken;
-    //     Notification?: NotificationComponentToken;
+    Notification?: NotificationComponentToken;
     //     Pagination?: PaginationComponentToken;
     //     Popover?: PopoverComponentToken;
     //     Popconfirm?: PopconfirmComponentToken;
@@ -120,15 +120,15 @@ export interface ComponentTokenMap {
     //     Steps?: StepsComponentToken;
     //     Menu?: MenuComponentToken;
     //     Modal?: ModalComponentToken;
-    //     Message?: MessageComponentToken;
+    Message?: MessageComponentToken;
     //     Upload?: UploadComponentToken;
     //     Tooltip?: TooltipComponentToken;
     //     Table?: TableComponentToken;
-    //     Space?: SpaceComponentToken;
+    Space?: SpaceComponentToken;
     //     Progress?: ProgressComponentToken;
     //     Tour?: TourComponentToken;
     //     QRCode?: QRCodeComponentToken;
-    //     App?: AppComponentToken;
+    App?: AppComponentToken;
     //
     //     /** @private Internal TS definition. Do not use. */
     Wave?: WaveToken;

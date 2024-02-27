@@ -1,4 +1,4 @@
-import { setAttribute as d, template as f } from "../node_modules/solid-js/web/dist/web.mjs";
+import { setAttribute as d, template as f } from "../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/web/dist/web.mjs";
 import l from "./Icon.mjs";
 import { splitProps as m, createComponent as c, mergeProps as h, Switch as g, Match as a, createRenderEffect as y } from "solid-js";
 var w = /* @__PURE__ */ f("<svg><use></svg>", !1, !0);

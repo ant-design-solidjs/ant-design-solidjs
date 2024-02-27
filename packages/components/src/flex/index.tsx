@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 import { omit } from '@ant-design-solidjs/util';
 
 import { isPresetSize } from '../_util/gapSize';
@@ -6,7 +6,7 @@ import { ConfigContext } from '../config-provider';
 import type { ConfigConsumerProps } from '../config-provider';
 import type { FlexProps } from './interface';
 import useStyle from './style';
-import createFlexClassNames from './utils';
+import createFlexClasses from './utils';
 import { createMemo, JSX, mergeProps, splitProps, useContext } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
@@ -32,14 +32,14 @@ export const Flex = (_props: FlexProps) => {
 
     const mergedCls = createMemo(() => {
         const mergedVertical = props.vertical ?? ctxFlex?.vertical;
-        return classNames(
+        return clsx(
             props.class,
             props.rootClass,
             ctxFlex?.class,
             prefixCls,
             hashId,
             cssVarCls,
-            createFlexClassNames(prefixCls, _props),
+            createFlexClasses(prefixCls, _props),
             {
                 [`${prefixCls}-rtl`]: ctxDirection === 'rtl',
                 [`${prefixCls}-gap-${props.gap}`]: isPresetSize(props.gap),

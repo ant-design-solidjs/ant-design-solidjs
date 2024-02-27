@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 import { ConfigContext } from '../config-provider';
 import BackTop from './BackTop';
 import FloatButton, { floatButtonPrefixCls } from './FloatButton';
@@ -36,8 +36,8 @@ const PurePanel: Component<PurePanelProps> = _props => {
     });
 
     return (
-        <Show when={props.items} fallback={<PureFloatButton class={classNames(props.class, pureCls())} {...rest} />}>
-            <FloatButtonGroup class={classNames(props.class, pureCls())} {...rest}>
+        <Show when={props.items} fallback={<PureFloatButton class={clsx(props.class, pureCls())} {...rest} />}>
+            <FloatButtonGroup class={clsx(props.class, pureCls())} {...rest}>
                 <For each={props.items}>{item => <PureFloatButton {...item} />}</For>
             </FloatButtonGroup>
         </Show>

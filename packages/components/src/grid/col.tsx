@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 
 import type { LiteralUnion } from '../_util/type';
 import { ConfigContext } from '../config-provider';
@@ -110,7 +110,7 @@ const Col = (_props: ColProps) => {
 
     // ==================== Normal =====================
     const classes = createMemo(() => {
-        return classNames(
+        return clsx(
             prefixCls,
             {
                 [`${prefixCls}-${props.span}`]: props.span !== undefined,

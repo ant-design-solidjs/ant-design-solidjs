@@ -26,10 +26,10 @@ export function normalizeAttrs(attrs: Attrs = {}): Attrs {
     return Object.keys(attrs).reduce((acc: Attrs, key) => {
         const val = attrs[key];
         switch (key) {
-            case 'class':
-                acc.className = val;
-                delete acc.class;
-                break;
+            // case 'class':
+            //     acc.className = val;
+            //     delete acc.class;
+            //     break;
             default:
                 delete acc[key];
                 acc[camelCase(key)] = val;

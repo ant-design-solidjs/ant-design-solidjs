@@ -64,8 +64,8 @@ function injectSelectorHash(key: string, hashId: string, hashPriority?: HashPrio
         return key;
     }
 
-    const hashClassName = `.${hashId}`;
-    const hashSelector = hashPriority === 'low' ? `:where(${hashClassName})` : hashClassName;
+    const hashClass = `.${hashId}`;
+    const hashSelector = hashPriority === 'low' ? `:where(${hashClass})` : hashClass;
 
     // 注入 hashId
     const keys = key.split(',').map(k => {

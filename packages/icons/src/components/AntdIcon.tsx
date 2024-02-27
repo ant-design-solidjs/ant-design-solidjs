@@ -1,6 +1,6 @@
 'use client';
 
-import classNames from 'clsx';
+import clsx from 'clsx';
 import type { IconDefinition } from '@ant-design/icons-svg/lib/types';
 import { blue } from '@ant-design/colors';
 
@@ -41,7 +41,7 @@ const Icon = ((_props: IconComponentProps) => {
         'twoToneColor',
     ]);
 
-    const { prefixCls = 'anticon', rootClassName } = useContext(Context);
+    const { prefixCls = 'anticon', rootClass } = useContext(Context);
 
     const iconTabIndex = createMemo(() => {
         if (props.tabIndex === undefined && props.onClick) {
@@ -51,8 +51,8 @@ const Icon = ((_props: IconComponentProps) => {
     });
 
     const classString = createMemo(() => {
-        return classNames(
-            rootClassName,
+        return clsx(
+            rootClass,
             prefixCls,
             {
                 [`${prefixCls}-${props.icon.name}`]: !!props.icon.name,

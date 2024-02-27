@@ -1,4 +1,4 @@
-import classNames from 'clsx';
+import clsx from 'clsx';
 import { isVisible, raf } from '@ant-design-solidjs/util';
 import { Component, createEffect, JSX, onCleanup, Show, useContext } from 'solid-js';
 import type { ConfigConsumerProps } from '../../config-provider';
@@ -37,7 +37,7 @@ const Wave: Component<WaveProps> = props => {
 
         // Customize wave effect
         (showEffect || showWaveEffect)(targetNode, {
-            class: classNames(prefixCls, hashId),
+            class: clsx(prefixCls, hashId),
             token,
             component: props.component,
             event,
