@@ -7,7 +7,8 @@
         "./packages/*"
     ],
     "scripts": {
-        "dev": "pnpm --parallel dev"
+        "dev": "pnpm --parallel dev",
+        "build": "pnpm --parallel build"
     },
     "dependencies": {
         "@ant-design/colors": "^7.0.2",
@@ -19,11 +20,9 @@
     },
     "devDependencies": {
         "@iconify/json": "^2.2.186",
-        "@stylexjs/stylex": "^0.5.1",
+        "@types/node": "^20.11.20",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
-        "@unocss/preset-uno": "^0.58.5",
-        "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.0",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
@@ -31,13 +30,11 @@
         "eslint-plugin-solid": "^0.13.1",
         "less": "^4.2.0",
         "prettier": "^3.2.5",
-        "tailwind-merge": "^2.2.1",
         "typescript": "^5.3.3",
         "unplugin-auto-import": "^0.17.5",
         "unplugin-icons": "^0.18.5",
         "vite": "^5.1.4",
         "vite-plugin-dts": "^3.7.3",
-        "vite-plugin-solid": "^2.10.1",
-        "vite-plugin-stylex": "^0.5.1"
+        "vite-plugin-solid": "^2.10.1"
     }
 }

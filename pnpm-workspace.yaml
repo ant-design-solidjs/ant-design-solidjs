@@ -1,2 +1,6 @@
 packages:
-  - 'packages/**'
+  - 'packages/components'
+  - 'packages/utils'
+  - 'packages/cssinjs'
+  - 'packages/util'
+  - 'packages/docs'

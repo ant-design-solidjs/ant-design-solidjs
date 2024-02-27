@@ -11,6 +11,6 @@
     "license": "ISC",
     "dependencies": {
         "ant-design-solidjs": "workspace:*",
-        "@ant-design-solidjs/icons": "workspace:*"
+        "@ant-design-solidjs/icons": "^0.0.0-beta.4"
     }
 }

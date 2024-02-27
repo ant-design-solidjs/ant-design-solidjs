@@ -13,17 +13,20 @@
     "scripts": {
         "build": "vite build"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "@types/node": "^20.11.20"
+    },
     "peerDependencies": {
         "solid-js": "^1.8.14",
         "typescript": "^5.3.3"
     },
     "dependencies": {
         "@ant-design-solidjs/cssinjs": "workspace:*",
-        "@ant-design-solidjs/icons": "workspace:*",
+        "@ant-design-solidjs/icons": "^0.0.0-beta.4",
         "@ant-design-solidjs/util": "workspace:*",
         "@solid-primitives/resize-observer": "^2.0.23",
         "@solid-primitives/scroll": "^2.0.21",
+        "async-validator": "^4.2.5",
         "scroll-into-view-if-needed": "^3.1.0",
         "solid-motionone": "^1.0.0"
     }

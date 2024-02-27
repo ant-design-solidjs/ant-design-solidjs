@@ -33,7 +33,7 @@ function internalSet<Entity = any, Output = Entity, Value = any>(
     return clone;
 }
 
-export default function set<Entity = any, Output = Entity, Value = any>(
+export function set<Entity = any, Output = Entity, Value = any>(
     entity: Entity,
     paths: Path,
     value: Value,

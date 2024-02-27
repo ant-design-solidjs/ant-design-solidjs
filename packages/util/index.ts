@@ -9,5 +9,6 @@ import raf from './src/raf';
 
 export * from './src/utils/get';
 export * from './src/utils/set';
+export * from './src/utils/is';
 
 export { raf };
