@@ -2,8 +2,8 @@
     "name": "@ant-design-solidjs/util",
     "type": "module",
     "private": false,
-    "version": "0.0.0-beta.1",
-    "main": "./lib/index.js",
+    "version": "0.0.0-beta.2",
+    "main": "./lib/index.cjs",
     "module": "./es/index.mjs",
     "files": [
         "es",

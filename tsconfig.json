@@ -22,7 +22,8 @@
         "noFallthroughCasesInSwitch": true,
         "paths": {
             "@/*": ["./src/*"]
-        }
+        },
+        "types": ["vite/client", "@testing-library/jest-dom"]
     },
     "include": ["src", "packages", "packages/docs/build"]
 }

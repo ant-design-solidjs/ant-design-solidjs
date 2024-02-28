@@ -36,7 +36,7 @@ export default defineConfig({
                 {
                     format: 'cjs',
                     //不用打包成.cjs
-                    entryFileNames: '[name].js',
+                    entryFileNames: '[name].cjs',
                     //让打包目录和我们目录对应
                     preserveModules: true,
                     preserveModulesRoot: 'src',
