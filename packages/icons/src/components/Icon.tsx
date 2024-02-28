@@ -48,34 +48,32 @@ const Icon = (_props: IconComponentProps) => {
 
     useInsertStyles(iconRef);
 
-    const { prefixCls = 'anticon', rootClassName } = useContext(Context);
-
-    const classString = clsx(rootClassName, prefixCls, props.class);
-
-    const svgClassString = clsx({
-        [`${prefixCls}-spin`]: !!props.spin,
-    });
-
-    const svgStyle = props.rotate
-        ? {
-              msTransform: `rotate(${props.rotate}deg)`,
-              transform: `rotate(${props.rotate}deg)`,
-          }
-        : undefined;
-
-    const innerSvgProps: CustomIconComponentProps = {
-        ...svgBaseProps,
-        className: svgClassString,
-        style: svgStyle,
-        viewBox: props.viewBox,
-    };
-
-    if (!props.viewBox) {
-        delete innerSvgProps.viewBox;
-    }
+    const { prefixCls = 'anticon', rootClass } = useContext(Context);
 
     // component > children
     const renderInnerNode = () => {
+        const svgClassString = clsx({
+            [`${prefixCls}-spin`]: !!props.spin,
+        });
+
+        const svgStyle = props.rotate
+            ? {
+                  msTransform: `rotate(${props.rotate}deg)`,
+                  transform: `rotate(${props.rotate}deg)`,
+              }
+            : undefined;
+
+        const innerSvgProps: CustomIconComponentProps = {
+            ...svgBaseProps,
+            className: svgClassString,
+            style: svgStyle,
+            viewBox: props.viewBox,
+        };
+
+        if (!props.viewBox) {
+            delete innerSvgProps.viewBox;
+        }
+
         if (props.component) {
             return (
                 <Dynamic component={props.component} {...innerSvgProps}>
@@ -101,19 +99,14 @@ const Icon = (_props: IconComponentProps) => {
         return null;
     };
 
-    let iconTabIndex = props.tabIndex;
-    if (iconTabIndex === undefined && props.onClick) {
-        iconTabIndex = -1;
-    }
-
     return (
         <span
             role="img"
             {...restProps}
             ref={mergedRef}
-            tabIndex={iconTabIndex}
+            tabIndex={props.tabIndex === undefined && props.onClick ? -1 : props.tabIndex}
             onClick={props.onClick}
-            class={classString}
+            class={clsx(rootClass, prefixCls, props.class)}
         >
             {renderInnerNode()}
         </span>

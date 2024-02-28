@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider';
 import type { SizeType } from '../config-provider/SizeContext';
 import useSize from '../config-provider/hooks/useSize';
 import useStyle from './style';
-import { children, Component, createContext, createMemo, JSX, Show, splitProps, useContext } from 'solid-js';
+import { Component, createContext, createMemo, For, JSX, Show, splitProps, useContext } from 'solid-js';
 
 export interface SpaceCompactItemContextType {
     compactSize?: SizeType;
@@ -17,8 +17,9 @@ export const SpaceCompactItemContext = createContext<SpaceCompactItemContextType
 
 export const useCompactItemContext = (prefixCls: string, direction: DirectionType) => {
     const compactItemContext = useContext(SpaceCompactItemContext);
-
+    console.log(compactItemContext);
     const compactItemClasses = createMemo<string>(() => {
+        // console.log(compactItemContext);
         if (!compactItemContext) {
             return '';
         }
@@ -49,9 +50,10 @@ export interface SpaceCompactProps extends JSX.HTMLAttributes<HTMLDivElement> {
     direction?: 'horizontal' | 'vertical';
     block?: boolean;
     rootClass?: string;
+    children?: JSX.Element[];
 }
 
-const CompactItem: Component<JSX.PropFsWithChildren<SpaceCompactItemContextType>> = _props => {
+const CompactItem: Component<JSX.PropsWithChildren<SpaceCompactItemContextType>> = _props => {
     const [props, otherProps] = splitProps(_props, ['children']);
     return <SpaceCompactItemContext.Provider value={otherProps}>{props.children}</SpaceCompactItemContext.Provider>;
 };
@@ -76,26 +78,9 @@ const Compact: Component<SpaceCompactProps> = _props => {
 
     const compactItemContext = useContext(SpaceCompactItemContext);
 
-    const childNodes = children(() => props.children).toArray();
-    const nodes = createMemo(() =>
-        childNodes.map((child, i) => {
-            // const key = (child && child.key) || `${prefixCls}-item-${i}`;
-            return (
-                <CompactItem
-                    compactSize={mergedSize}
-                    compactDirection={props.direction}
-                    isFirstItem={i === 0 && (!compactItemContext || compactItemContext?.isFirstItem)}
-                    isLastItem={i === childNodes.length - 1 && (!compactItemContext || compactItemContext?.isLastItem)}
-                >
-                    {child}
-                </CompactItem>
-            );
-        }),
-    );
-
     // =========================== Render ===========================
     return (
-        <Show when={childNodes.length > 0}>
+        <Show when={props.children.length > 0}>
             {wrapCSSVar(
                 <div
                     class={clsx(
@@ -111,7 +96,22 @@ const Compact: Component<SpaceCompactProps> = _props => {
                     )}
                     {...restProps}
                 >
-                    {nodes()}
+                    <For each={props.children}>
+                        {(child, i) => (
+                            <CompactItem
+                                compactSize={mergedSize()}
+                                compactDirection={props.direction}
+                                isFirstItem={i() === 0 && (!compactItemContext || compactItemContext?.isFirstItem)}
+                                isLastItem={
+                                    i() === props.children.length - 1 &&
+                                    (!compactItemContext || compactItemContext?.isLastItem)
+                                }
+                            >
+                                {/*{child}*/}
+                                <Test />
+                            </CompactItem>
+                        )}
+                    </For>
                 </div>,
             )}
         </Show>
@@ -119,3 +119,9 @@ const Compact: Component<SpaceCompactProps> = _props => {
 };
 
 export default Compact;
+
+function Test() {
+    useCompactItemContext('', 'ltr');
+
+    return <div>test</div>;
+}

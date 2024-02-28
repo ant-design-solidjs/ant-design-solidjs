@@ -2,8 +2,8 @@ import Group from './Group';
 import type { InputProps, InputRef } from './Input';
 import InternalInput from './Input';
 import Password from './Password';
-import Search from './Search';
-import TextArea from './TextArea';
+// import Search from './Search';
+// import TextArea from './TextArea';
 import { Component, Ref } from 'solid-js';
 
 export type { GroupProps } from './Group';
@@ -14,15 +14,15 @@ export type { TextAreaProps } from './TextArea';
 
 type CompoundedComponent = Component<InputProps & { ref?: Ref<InputRef> }> & {
     Group: typeof Group;
-    Search: typeof Search;
-    TextArea: typeof TextArea;
+    // Search: typeof Search;
+    // TextArea: typeof TextArea;
     Password: typeof Password;
 };
 
 const Input = InternalInput as CompoundedComponent;
 
 Input.Group = Group;
-Input.Search = Search;
-Input.TextArea = TextArea;
+// Input.Search = Search;
+// Input.TextArea = TextArea;
 Input.Password = Password;
 export default Input;

@@ -25,5 +25,5 @@ export function callHandler<T, E extends Event>(
         }
     }
 
-    return event?.defaultPrevented;
+    // return event?.defaultPrevented;
 }

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { fillRef, omit } from '@ant-design-solidjs/util';
 import BaseInput from './BaseInput';
-import type { ChangeEventInfo, CountConfig, InputProps, ShowCountFormatter } from './interface';
+import type { CountConfig, InputProps, ShowCountFormatter, ChangeEventInfo } from './interface';
 import type { InputFocusOptions } from './utils/commonUtils';
 import { resolveOnChange, triggerFocus } from './utils/commonUtils';
 import { createEffect, createMemo, createSignal, JSX, mergeProps, splitProps } from 'solid-js';
@@ -34,6 +34,7 @@ const Input = (_props: InputProps) => {
         'styles',
         'onCompositionStart',
         'onCompositionEnd',
+        'onInput',
     ]);
 
     const [focused, setFocused] = createSignal<boolean>(false);
@@ -49,7 +50,7 @@ const Input = (_props: InputProps) => {
 
     // ====================== Value =======================
     const [value, setValue] = createSignal(rest.value);
-    const formatValue = value === undefined || value === null ? '' : String(value);
+    const formatValue = () => (value() === undefined || value() === null ? '' : String(value()));
 
     // =================== Select Range ===================
     const [selection, setSelection] = createSignal<[start: number, end: number] | null>(null);
@@ -80,7 +81,7 @@ const Input = (_props: InputProps) => {
         };
     });
     const mergedMax = createMemo(() => countConfig().max || Number(props.maxLength));
-    const valueLength = createMemo(() => countConfig().strategy(formatValue));
+    const valueLength = createMemo(() => countConfig().strategy(formatValue()));
 
     // ======================= Ref ========================
     fillRef(rest.ref, {
@@ -107,9 +108,9 @@ const Input = (_props: InputProps) => {
         info: ChangeEventInfo,
     ) => {
         let cutValue = currentValue;
+        if (compositionRef) return;
 
         if (
-            !compositionRef &&
             countConfig().exceedFormatter &&
             countConfig().max &&
             countConfig().strategy(currentValue) > countConfig().max
@@ -121,15 +122,20 @@ const Input = (_props: InputProps) => {
             if (currentValue !== cutValue) {
                 setSelection([inputRef?.selectionStart || 0, inputRef?.selectionEnd || 0]);
             }
-        } else if (info.source === 'compositionEnd') {
-            // Avoid triggering twice
-            // https://github.com/ant-design/ant-design/issues/46587
-            return;
         }
+        // else if (info.source === 'compositionEnd') {
+        // Avoid triggering twice
+        // https://github.com/ant-design/ant-design/issues/46587
+        // return;
+        //}
         setValue(cutValue);
 
         if (inputRef) {
-            resolveOnChange(inputRef, e, props.onChange, cutValue);
+            if (info.source === 'change') {
+                resolveOnChange(inputRef, e, props.onChange, cutValue);
+            } else {
+                resolveOnChange(inputRef, e, props.onInput, cutValue);
+            }
         }
     };
 
@@ -140,16 +146,16 @@ const Input = (_props: InputProps) => {
     });
 
     const onInternalChange: JSX.ChangeEventHandler<HTMLInputElement, JSX.ChangeEvent<HTMLInputElement>> = e => {
-        triggerChange(e, e.target.value, {
-            source: 'change',
-        });
+        triggerChange(e, e.target.value, { source: 'change' });
+    };
+
+    const onInternalInput: JSX.ChangeEventHandler<HTMLInputElement, JSX.ChangeEvent<HTMLInputElement>> = e => {
+        triggerChange(e, e.target.value, { source: 'input' });
     };
 
     const onInternalCompositionEnd: JSX.CompositionEventHandler<HTMLInputElement> = e => {
         compositionRef = false;
-        triggerChange(e, e.target.value, {
-            source: 'compositionEnd',
-        });
+        triggerChange(e, e.target.value, { source: 'input' });
         callHandler(e, props.onCompositionEnd);
     };
 
@@ -178,27 +184,29 @@ const Input = (_props: InputProps) => {
         }
     };
 
+    const otherProps = omit(
+        _props as Omit<InputProps, 'value'> & {
+            value?: JSX.InputHTMLAttributes<HTMLInputElement>['value'];
+        },
+        [
+            'prefixCls',
+            'onPressEnter',
+            'addonBefore',
+            'addonAfter',
+            'prefix',
+            'suffix',
+            'allowClear',
+            'showCount',
+            'count',
+            'classes',
+            'htmlSize',
+            'styles',
+            'onInput',
+        ],
+    );
+
     const getInputElement = (ps: any) => {
         // Fix https://fb.me/react-unknown-prop
-        const otherProps = omit(
-            props as Omit<InputProps, 'value'> & {
-                value?: JSX.InputHTMLAttributes<HTMLInputElement>['value'];
-            },
-            [
-                'prefixCls',
-                'onPressEnter',
-                'addonBefore',
-                'addonAfter',
-                'prefix',
-                'suffix',
-                'allowClear',
-                'showCount',
-                'count',
-                'classes',
-                'htmlSize',
-                'styles',
-            ],
-        );
         return (
             <input
                 autocomplete={props.autoComplete}
@@ -207,14 +215,6 @@ const Input = (_props: InputProps) => {
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onKeyDown={handleKeyDown}
-                class={clsx(
-                    props.prefixCls,
-                    {
-                        [`${props.prefixCls}-disabled`]: props.disabled,
-                    },
-                    props.classes?.input,
-                )}
-                style={props.styles?.input}
                 ref={inputRef}
                 size={props.htmlSize}
                 type={props.type}
@@ -223,7 +223,17 @@ const Input = (_props: InputProps) => {
                     callHandler(e, props.onCompositionStart);
                 }}
                 onCompositionEnd={onInternalCompositionEnd}
+                onInput={onInternalInput}
                 {...ps}
+                class={clsx(
+                    props.prefixCls,
+                    {
+                        [`${props.prefixCls}-disabled`]: props.disabled,
+                    },
+                    props.classes?.input,
+                    ps.class,
+                )}
+                style={{ ...props.styles?.input, ...ps.style }}
             />
         );
     };
@@ -235,7 +245,7 @@ const Input = (_props: InputProps) => {
         if (props.suffix || countConfig().show) {
             const dataCount = countConfig().showFormatter
                 ? countConfig().showFormatter({
-                      value: formatValue,
+                      value: formatValue(),
                       count: valueLength(),
                       maxLength: mergedMax(),
                   })
@@ -273,7 +283,6 @@ const Input = (_props: InputProps) => {
             prefixCls={props.prefixCls}
             class={clsx(props.class, !!mergedMax() && valueLength() > mergedMax() && `${props.prefixCls}-out-of-range`)}
             handleReset={handleReset}
-            value={formatValue}
             focused={focused()}
             triggerFocus={focus}
             suffix={getSuffix()}

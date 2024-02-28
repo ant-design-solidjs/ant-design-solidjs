@@ -128,5 +128,5 @@ export interface InputRef {
 }
 
 export interface ChangeEventInfo {
-    source: 'compositionEnd' | 'change';
+    source: 'input' | 'change';
 }

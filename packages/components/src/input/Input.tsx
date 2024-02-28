@@ -21,6 +21,7 @@ import useVariant from '../form/hooks/useVariants';
 import getAllowClear from '../_util/getAllowClear';
 import { createEffect, JSX, Ref, splitProps, useContext } from 'solid-js';
 import { callHandler } from '../_util/event.ts';
+import { log } from 'util';
 
 export interface InputFocusOptions extends FocusOptions {
     cursor?: 'start' | 'end' | 'all';
@@ -161,7 +162,7 @@ const Input = (_props: InputProps) => {
 
     const mergedAllowClear = getAllowClear(props.allowClear);
     const [variant, enableVariantCls] = useVariant(props.variant);
-
+    createEffect(() => console.log(compactItemClasses()));
     return wrapCSSVar(
         <RcInput
             ref={composeRef(props.ref, inputRef)}

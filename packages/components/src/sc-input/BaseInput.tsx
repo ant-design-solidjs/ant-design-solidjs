@@ -22,7 +22,7 @@ const BaseInput: Component<BaseInputProps> = _props => {
 
     const element = createMemo(() => {
         let element = props.children({
-            value: props.value,
+            // value: props.value,
             class: clsx(!hasAffix && props.classes?.variant) || null,
             hidden: props.hidden,
             style: {
@@ -66,7 +66,7 @@ const BaseInput: Component<BaseInputProps> = _props => {
                 {
                     [`${props.prefixCls}-disabled`]: props.disabled,
                     [`${affixWrapperPrefixCls}-disabled`]: props.disabled, // Not used, but keep it
-                    [`${affixWrapperPrefixCls}-focused`]: props.focused, // Not used, but keep it
+                    // [`${affixWrapperPrefixCls}-focused`]: props.focused, // Not used, but keep it
                     [`${affixWrapperPrefixCls}-readonly`]: props.readOnly,
                     [`${affixWrapperPrefixCls}-input-with-clear-btn`]: props.suffix && props.allowClear && props.value,
                 },
@@ -94,14 +94,14 @@ const BaseInput: Component<BaseInputProps> = _props => {
                         ...props.style,
                     }}
                 >
-                    {props.prefix && (
+                    <Show when={props.prefix}>
                         <span
                             class={clsx(`${props.prefixCls}-prefix`, props.classes?.prefix)}
                             style={props.styles?.prefix}
                         >
                             {props.prefix}
                         </span>
-                    )}
+                    </Show>
                     {element}
                     {suffixNode}
                 </Dynamic>
@@ -122,7 +122,6 @@ const BaseInput: Component<BaseInputProps> = _props => {
                     [`${groupWrapperCls}-disabled`]: props.disabled,
                 },
                 props.classes?.groupWrapper,
-                !hasAffix && props.classes?.variant,
             );
 
             // Need another wrapper for changing display:table to display:inline-block

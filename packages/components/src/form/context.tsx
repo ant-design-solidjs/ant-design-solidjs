@@ -1,7 +1,7 @@
 import { createContext, useContext, createMemo, JSX, Component } from 'solid-js';
-import { FormProvider as RcFormProvider } from 'rc-field-form';
-import type { FormProviderProps as RcFormProviderProps } from 'rc-field-form/lib/FormContext';
-import type { Meta } from 'rc-field-form/lib/interface';
+import { FormProvider as RcFormProvider } from '../sc-field-form';
+import type { FormProviderProps as RcFormProviderProps } from '../sc-field-form/FormContext';
+import type { Meta } from '../sc-field-form/interface';
 import { omit } from '@ant-design-solidjs/util';
 
 import type { ColProps } from '../grid';

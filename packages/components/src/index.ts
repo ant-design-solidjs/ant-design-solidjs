@@ -7,6 +7,9 @@ export * from './divider';
 export * from './flex';
 export * from './grid';
 
+export { default as Space } from './space';
+export type { SpaceProps } from './space';
+
 export { default as Input } from './input';
 export type { InputProps, InputRef } from './input';
 

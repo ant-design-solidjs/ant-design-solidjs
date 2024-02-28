@@ -19,7 +19,7 @@ import type {
 import ListContext from './ListContext.ts';
 import { toArray } from './utils/typeUtil.ts';
 import { containsNamePath, defaultGetValueFromEvent, getNamePath, getValue } from './utils/valueUtil.ts';
-import { createSignal, JSX, onMount, Show, splitProps, useContext } from 'solid-js';
+import { createSignal, JSX, mergeProps, onMount, Show, splitProps, useContext } from 'solid-js';
 import { validateRules } from './utils/validateUtil.ts';
 
 const EMPTY_ERRORS: any[] = [];
@@ -97,7 +97,9 @@ export interface FieldState {
     resetCount: number;
 }
 
-function Field(props: InternalFieldProps) {
+function Field(_props: InternalFieldProps) {
+    const props = mergeProps({ trigger: 'onChange', valuePropName: 'value' }, _props);
+
     onMount(() => {
         if (props.fieldContext) {
             const { getInternalHooks }: InternalFormInstance = props.fieldContext;
@@ -570,7 +572,14 @@ function WrapperField<Values = any>(_props: FieldProps<Values>) {
         warning(false, '`preserve` should not apply on Form.List fields.');
     }
 
-    return <Field name={namePath} isListField={!!listContext} {...restProps} fieldContext={fieldContext} />;
+    return (
+        <Field
+            name={props.name !== undefined ? getNamePath(props.name) : undefined}
+            isListField={!!listContext}
+            {...restProps}
+            fieldContext={fieldContext}
+        />
+    );
 }
 
 export default WrapperField;

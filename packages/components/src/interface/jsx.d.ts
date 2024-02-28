@@ -58,6 +58,6 @@ declare module 'solid-js' {
         type KeyboardEventHandler<E = Element> = JSX.EventHandlerUnion<E, KeyboardEvent<E>>;
         type CompositionEventHandler<E = Element> = JSX.EventHandlerUnion<E, CompositionEvent>;
 
-        type PropFsWithChildren<P extends object> = p & { children?: JSX.Element };
+        type PropsWithChildren<P extends object> = p & { children?: JSX.Element };
     }
 }

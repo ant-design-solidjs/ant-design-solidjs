@@ -7,7 +7,18 @@ import { SpaceContextProvider } from './context';
 import type { SpaceContextType } from './context';
 import Item from './Item';
 import useStyle from './style';
-import { children, Component, createMemo, JSX, mergeProps, Ref, Show, splitProps, useContext } from 'solid-js';
+import {
+    children,
+    Component,
+    createMemo,
+    createSignal,
+    JSX,
+    mergeProps,
+    Ref,
+    Show,
+    splitProps,
+    useContext,
+} from 'solid-js';
 
 export { SpaceContext } from './context';
 
@@ -68,24 +79,24 @@ const Space = (_props: SpaceProps) => {
 
     // Calculate latest one
     let latestIndex = 0;
-    const nodes = childNodes.map<JSX.Element>((child, i) => {
-        if (child !== null && child !== undefined) {
-            latestIndex = i;
-        }
+    const nodes = () => {
+        return childNodes.map<JSX.Element>((child, i) => {
+            if (child !== null && child !== undefined) {
+                latestIndex = i;
+            }
 
-        return (
-            <Item
-                class={clsx(`${prefixCls()}-item`, props.classes?.item ?? space?.classes?.item)}
-                index={i}
-                split={props.split}
-                style={props.styles?.item ?? space?.styles?.item}
-            >
-                {child}
-            </Item>
-        );
-    });
-
-    const spaceContext = createMemo<SpaceContextType>(() => ({ latestIndex }));
+            return (
+                <Item
+                    class={clsx(`${prefixCls()}-item`, props.classes?.item ?? space?.classes?.item)}
+                    index={i}
+                    split={props.split}
+                    style={props.styles?.item ?? space?.styles?.item}
+                >
+                    {child}
+                </Item>
+            );
+        });
+    };
 
     // =========================== Render ===========================
     const gapStyle = createMemo(() => {
@@ -127,7 +138,7 @@ const Space = (_props: SpaceProps) => {
                     style={{ ...gapStyle(), ...space?.style, ...props.style }}
                     {...otherProps}
                 >
-                    <SpaceContextProvider value={spaceContext()}>{nodes}</SpaceContextProvider>
+                    <SpaceContextProvider value={{ latestIndex }}>{nodes()}</SpaceContextProvider>
                 </div>,
             )}
         </Show>

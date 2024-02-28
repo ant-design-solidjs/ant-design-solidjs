@@ -2,6 +2,7 @@ import { timeout, act } from './timeout';
 import { matchNamePath } from '../../utils/valueUtil';
 import { fireEvent } from '@solidjs/testing-library';
 import { JSX } from 'solid-js';
+import { expect } from 'vitest';
 
 export function getInput(
     container: HTMLElement,
