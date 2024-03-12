@@ -8,6 +8,9 @@ import { createMemo, JSX } from 'solid-js';
 export default function useTheme(
     theme?: ThemeConfig,
     parentTheme?: ThemeConfig,
+    config?: {
+        prefixCls?: string;
+    },
 ): JSX.Accessor<ThemeConfig> | undefined {
     const warning = devUseWarning('ConfigProvider');
 
@@ -45,12 +48,12 @@ export default function useTheme(
 
         const cssVarKey = `css-var-${themeKey.replace(/:/g, '')}`;
         const mergedCssVar = (themeConfig.cssVar ?? parentThemeConfig.cssVar) && {
-            prefix: 'ant', // Default to ant
+            prefix: config?.prefixCls, // Same as prefixCls by default
             ...(typeof parentThemeConfig.cssVar === 'object' ? parentThemeConfig.cssVar : {}),
             ...(typeof themeConfig.cssVar === 'object' ? themeConfig.cssVar : {}),
             key: (typeof themeConfig.cssVar === 'object' && themeConfig.cssVar?.key) || cssVarKey,
         };
-
+        console.log(mergedCssVar);
         // Base token
         return {
             ...parentThemeConfig,

@@ -1,13 +1,13 @@
-import CheckCircleFilled from '@ant-design-solidjs/icons/es/icons/CheckCircleFilled';
-import CloseCircleFilled from '@ant-design-solidjs/icons/es/icons/CloseCircleFilled';
-import CloseOutlined from '@ant-design-solidjs/icons/es/icons/CloseOutlined';
-import ExclamationCircleFilled from '@ant-design-solidjs/icons/es/icons/ExclamationCircleFilled';
-import InfoCircleFilled from '@ant-design-solidjs/icons/es/icons/InfoCircleFilled';
+import {
+    CheckCircleFilled,
+    CloseCircleFilled,
+    CloseOutlined,
+    InfoCircleFilled,
+    ExclamationCircleFilled,
+} from '@ant-design-solidjs/icons';
 import clsx from 'clsx';
 import CSSMotion from '../motion';
-// import { pickAttrs } from '@ant-design-solidjs/util';
 
-// import { replaceElement } from '../_util/reactNode';
 import { ConfigContext } from '../config-provider';
 import useStyle from './style';
 import { Component, createMemo, createSignal, JSX, Show, splitProps, useContext } from 'solid-js';

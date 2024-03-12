@@ -35,6 +35,14 @@ const routes: RouteDefinition[] = [
                 component: lazy(() => import('@/views/components/flex')),
             },
             {
+                path: '/skeleton',
+                component: lazy(() => import('@/views/components/skeleton')),
+            },
+            {
+                path: '/spin',
+                component: lazy(() => import('@/views/components/spin')),
+            },
+            {
                 path: '/notification',
                 component: lazy(() => import('@/views/components/notification')),
             },

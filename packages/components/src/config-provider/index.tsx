@@ -17,7 +17,7 @@ import warning, { WarningContext } from '../_util/warning';
 // import type { SelectProps } from '../select';
 // import type { SpaceProps } from '../space';
 // import type { TabsProps } from '../tabs';
-import { defaultTheme, DesignTokenContext } from '../theme/context';
+import { defaultConfig, defaultTheme, DesignTokenContext } from '../theme/context';
 import defaultSeedToken from '../theme/themes/seed';
 import type {
     //     BadgeConfig,
@@ -46,6 +46,9 @@ import MotionWrapper from './MotionWrapper';
 import PropWarning from './PropWarning';
 // import type { SizeType } from './SizeContext';
 import SizeContext, { SizeContextProvider } from './SizeContext';
+import useTheme from './hooks/useTheme.ts';
+import { OverrideToken } from '../theme/interface';
+import useThemeKey from './hooks/useThemeKey.ts';
 // import useStyle from './style';
 // import { Component, JSX } from 'solid-js';
 
@@ -134,7 +137,7 @@ export interface ConfigProviderProps {
     //     // divider?: ComponentStyleConfig;
     //     // drawer?: DrawerConfig;
     //     // typography?: ComponentStyleConfig;
-    //     // skeleton?: ComponentStyleConfig;
+    skeleton?: ComponentStyleConfig;
     //     // spin?: ComponentStyleConfig;
     //     // segmented?: ComponentStyleConfig;
     //     // statistic?: ComponentStyleConfig;
@@ -332,24 +335,64 @@ function ProviderChildren(props: ProviderChildrenProps) {
     //     } = props;
     //
     //     // =================================== Context ===================================
-    //     const getPrefixCls = (suffixCls: string, customizePrefixCls?: string) => {
-    //         const { prefixCls } = props;
-    //
-    //         if (customizePrefixCls) {
-    //             return customizePrefixCls;
-    //         }
-    //
-    //         const mergedPrefixCls = prefixCls || parentContext.getPrefixCls('');
-    //
-    //         return suffixCls ? `${mergedPrefixCls}-${suffixCls}` : mergedPrefixCls;
-    //     };
+    const getPrefixCls = (suffixCls: string, customizePrefixCls?: string) => {
+        if (customizePrefixCls) {
+            return customizePrefixCls;
+        }
+
+        const mergedPrefixCls = props.prefixCls || props.parentContext.getPrefixCls('');
+
+        return suffixCls ? `${mergedPrefixCls}-${suffixCls}` : mergedPrefixCls;
+    };
     //
     //     const iconPrefixCls = customIconPrefixCls || parentContext.iconPrefixCls || defaultIconPrefixCls;
     //     const csp = customCsp || parentContext.csp;
     //
     //     useStyle(iconPrefixCls, csp);
     //
-    // const mergedTheme = useTheme(props.theme, props.parentContext.theme);
+    // const mergedTheme = useTheme(props.theme, props.parentContext.theme, { prefixCls: getPrefixCls('') });
+    const mergedTheme = createMemo<ThemeConfig | undefined>(() => {
+        if (!props.theme) {
+            return props.parentContext.theme;
+        }
+
+        const themeConfig = props.theme || {};
+        const parentThemeConfig: ThemeConfig =
+            themeConfig.inherit === false || !props.parentContext.theme ? defaultConfig : props.parentContext.theme;
+
+        // Override
+        const mergedComponents = {
+            ...parentThemeConfig.components,
+        };
+
+        Object.keys(props.theme.components || {}).forEach((componentName: keyof OverrideToken) => {
+            mergedComponents[componentName] = {
+                ...mergedComponents[componentName],
+                ...props.theme.components![componentName],
+            } as any;
+        });
+        const themeKey = useThemeKey();
+        const cssVarKey = `css-var-${themeKey.replace(/:/g, '')}`;
+        const mergedCssVar = (themeConfig.cssVar ?? parentThemeConfig.cssVar) && {
+            prefix: getPrefixCls(''), // Same as prefixCls by default
+            ...(typeof parentThemeConfig.cssVar === 'object' ? parentThemeConfig.cssVar : {}),
+            ...(typeof themeConfig.cssVar === 'object' ? themeConfig.cssVar : {}),
+            key: (typeof themeConfig.cssVar === 'object' && themeConfig.cssVar?.key) || cssVarKey,
+        };
+
+        // Base token
+        return {
+            ...parentThemeConfig,
+            ...themeConfig,
+
+            token: {
+                ...parentThemeConfig.token,
+                ...themeConfig.token,
+            },
+            components: mergedComponents,
+            cssVar: mergedCssVar,
+        };
+    });
 
     // if (process.env.NODE_ENV !== 'production') {
     //     existThemeConfig = existThemeConfig || !!mergedTheme;
@@ -370,7 +413,7 @@ function ProviderChildren(props: ProviderChildrenProps) {
             //         popupOverflow,
             //         getPrefixCls,
             //         iconPrefixCls,
-            // theme: mergedTheme,
+            theme: mergedTheme(),
             //         segmented,
             //         statistic,
             //         spin,
@@ -383,7 +426,7 @@ function ProviderChildren(props: ProviderChildrenProps) {
             //         descriptions,
             //         divider,
             //         drawer,
-            //         skeleton,
+            skeleton: props.skeleton,
             //         steps,
             //         image,
             //         input,
@@ -449,7 +492,8 @@ function ProviderChildren(props: ProviderChildrenProps) {
 
     // ================================ Dynamic theme ================================
     const memoTheme = createMemo(() => {
-        const { algorithm, token, components, cssVar, ...rest } = props.theme || {};
+        const { algorithm, token, components, cssVar, ...rest } = mergedTheme() || {};
+
         const themeObj =
             algorithm && (!Array.isArray(algorithm) || algorithm.length > 0) ? createTheme(algorithm) : defaultTheme;
 
@@ -560,6 +604,7 @@ const ConfigProvider: Component<ConfigProviderProps> & {
 } = props => {
     const context = useContext<ConfigConsumerProps>(ConfigContext);
     // const antLocale = useContext<LocaleContextProps | undefined>(LocaleContext);
+
     return (
         <ProviderChildren
             parentContext={context}

@@ -1,4 +1,4 @@
-import { Component, JSX, useContext } from 'solid-js';
+import { Component, JSX, Show, useContext } from 'solid-js';
 import { CSSInterpolation, token2CSSVar, useCSSVarRegister, useStyleRegister } from '@ant-design-solidjs/cssinjs';
 import { warning } from '@ant-design-solidjs/util';
 
@@ -280,26 +280,28 @@ const genCSSVarRegister = <C extends OverrideComponent>(
         compUnitless[prefixToken(key)] = originUnitless[key];
     });
 
-    function CSSVarRegister({ rootCls, cssVar }: CSSVarRegisterProps) {
+    function CSSVarRegister(props: CSSVarRegisterProps) {
         const [, realToken] = useToken();
+        console.log(realToken);
         useCSSVarRegister(
             {
                 path: [component],
-                prefix: cssVar.prefix,
-                key: cssVar?.key,
+                prefix: props.cssVar.prefix,
+                key: props.cssVar?.key,
                 unitless: {
                     ...unitless,
                     ...compUnitless,
                 },
                 ignore,
                 token: realToken,
-                scope: rootCls,
+                scope: props.rootCls,
             },
             () => {
                 const defaultToken = getDefaultComponentToken(component, realToken, getDefaultToken);
                 const componentToken = getComponentToken(component, realToken, defaultToken, {
                     deprecatedTokens: options?.deprecatedTokens,
                 });
+
                 Object.keys(defaultToken).forEach(key => {
                     componentToken[prefixToken(key)] = componentToken[key];
                     delete componentToken[key];
@@ -307,22 +309,21 @@ const genCSSVarRegister = <C extends OverrideComponent>(
                 return componentToken;
             },
         );
-        return null;
+        return <></>;
     }
 
     return (rootCls: string) => {
         const [, , , , cssVar] = useToken();
 
         return [
-            (node: JSX.Element): JSX.Element =>
-                injectStyle && cssVar ? (
-                    <>
+            (node: JSX.Element): JSX.Element => {
+                return (
+                    <Show when={injectStyle && cssVar} fallback={node}>
                         <CSSVarRegister rootCls={rootCls} cssVar={cssVar} component={component} />
                         {node}
-                    </>
-                ) : (
-                    node
-                ),
+                    </Show>
+                );
+            },
             cssVar?.key,
         ] as const;
     };

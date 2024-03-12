@@ -128,7 +128,7 @@ export interface ConfigConsumerProps {
     // popupMatchSelectWidth?: boolean;
     // popupOverflow?: PopupOverflow;
     // form?: ComponentStyleConfig & Pick<FormProps, 'requiredMark' | 'colon' | 'scrollToFirstError' | 'validateMessages'>;
-    // theme?: ThemeConfig;
+    theme?: ThemeConfig;
     // select?: ComponentStyleConfig & Pick<SelectProps, 'showSearch'>;
     alert?: AlertConfig;
     anchor?: ComponentStyleConfig;
@@ -140,8 +140,8 @@ export interface ConfigConsumerProps {
     // cascader?: ComponentStyleConfig;
     // collapse?: ComponentStyleConfig;
     // typography?: ComponentStyleConfig;
-    // skeleton?: ComponentStyleConfig;
-    // spin?: ComponentStyleConfig;
+    skeleton?: ComponentStyleConfig;
+    spin?: ComponentStyleConfig;
     // segmented?: ComponentStyleConfig;
     // steps?: ComponentStyleConfig;
     // statistic?: ComponentStyleConfig;
