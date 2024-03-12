@@ -42,6 +42,10 @@ const routes: RouteDefinition[] = [
                 path: '/form/input',
                 component: lazy(() => import('@/views/components/form/input')),
             },
+            {
+                path: '/watermark',
+                component: lazy(() => import('@/views/components/watermark')),
+            },
         ],
     },
 ];

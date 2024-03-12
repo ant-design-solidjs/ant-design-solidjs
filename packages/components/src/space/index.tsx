@@ -4,21 +4,9 @@ import { ConfigContext } from '../config-provider';
 import type { SizeType } from '../config-provider/SizeContext';
 import Compact from './Compact';
 import { SpaceContextProvider } from './context';
-import type { SpaceContextType } from './context';
 import Item from './Item';
 import useStyle from './style';
-import {
-    children,
-    Component,
-    createMemo,
-    createSignal,
-    JSX,
-    mergeProps,
-    Ref,
-    Show,
-    splitProps,
-    useContext,
-} from 'solid-js';
+import { children, Component, createMemo, JSX, mergeProps, Ref, Show, splitProps, useContext } from 'solid-js';
 
 export { SpaceContext } from './context';
 

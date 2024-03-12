@@ -87,8 +87,6 @@ export default function useNotification(rootConfig: NotificationConfig = {}): [N
     const [container, setContainer] = createSignal<HTMLElement | ShadowRoot>();
     let notificationsRef: NotificationsRef;
 
-    createEffect(() => console.log(container()));
-
     const contextHolder = (
         <Notifications
             container={container()}

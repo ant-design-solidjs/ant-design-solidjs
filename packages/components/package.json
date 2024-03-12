@@ -27,6 +27,7 @@
         "@ant-design-solidjs/cssinjs": "workspace:*",
         "@ant-design-solidjs/icons": "^0.0.0-beta.5",
         "@ant-design-solidjs/util": "workspace:*",
+        "@solid-primitives/mutation-observer": "^1.1.17",
         "@solid-primitives/resize-observer": "^2.0.23",
         "@solid-primitives/scroll": "^2.0.21",
         "async-validator": "^4.2.5",

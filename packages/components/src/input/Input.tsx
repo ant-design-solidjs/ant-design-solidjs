@@ -162,7 +162,7 @@ const Input = (_props: InputProps) => {
 
     const mergedAllowClear = getAllowClear(props.allowClear);
     const [variant, enableVariantCls] = useVariant(props.variant);
-    createEffect(() => console.log(compactItemClasses()));
+
     return wrapCSSVar(
         <RcInput
             ref={composeRef(props.ref, inputRef)}

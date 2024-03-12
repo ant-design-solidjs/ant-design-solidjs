@@ -90,7 +90,7 @@ export const Divider: Component<DividerProps> = _props => {
 
         warning(!props.children || props.type !== 'vertical', 'usage', '`children` not working in `vertical` mode.');
     }
-    console.log(222);
+
     return wrapCSSVar(
         <div class={classString()} style={{ ...divider?.style, ...props.style }} {...restProps} role="separator">
             {props.children && props.type !== 'vertical' && (

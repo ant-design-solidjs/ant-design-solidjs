@@ -17,9 +17,7 @@ export const SpaceCompactItemContext = createContext<SpaceCompactItemContextType
 
 export const useCompactItemContext = (prefixCls: string, direction: DirectionType) => {
     const compactItemContext = useContext(SpaceCompactItemContext);
-    console.log(compactItemContext);
     const compactItemClasses = createMemo<string>(() => {
-        // console.log(compactItemContext);
         if (!compactItemContext) {
             return '';
         }
@@ -107,8 +105,7 @@ const Compact: Component<SpaceCompactProps> = _props => {
                                     (!compactItemContext || compactItemContext?.isLastItem)
                                 }
                             >
-                                {/*{child}*/}
-                                <Test />
+                                {child}
                             </CompactItem>
                         )}
                     </For>
@@ -119,9 +116,3 @@ const Compact: Component<SpaceCompactProps> = _props => {
 };
 
 export default Compact;
-
-function Test() {
-    useCompactItemContext('', 'ltr');
-
-    return <div>test</div>;
-}

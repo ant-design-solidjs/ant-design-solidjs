@@ -18,3 +18,6 @@ export type { ArgsProps as NotificationArgsProps } from './notification';
 
 export type { GetProps, GetProp } from './_util/type';
 export type { ConfigProviderProps, ThemeConfig } from './config-provider';
+
+export { default as Watermark } from './watermark';
+export type { WatermarkProps } from './watermark';

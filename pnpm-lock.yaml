@@ -105,6 +105,9 @@ importers:
       '@ant-design-solidjs/util':
         specifier: workspace:*
         version: link:../util
+      '@solid-primitives/mutation-observer':
+        specifier: ^1.1.17
+        version: 1.1.17(solid-js@1.8.15)
       '@solid-primitives/resize-observer':
         specifier: ^2.0.23
         version: 2.0.23(solid-js@1.8.15)
@@ -2112,6 +2115,15 @@ packages:
       solid-js: 1.8.15
     dev: false
 
+  /@solid-primitives/mutation-observer@1.1.17(solid-js@1.8.15):
+    resolution: {integrity: sha512-01skkiHtNWl2PQ0ugFzZHBMsHk870+bZSNK8Gvjcj3mZwBzAJPaUPzFswfM/V8Io1Cko86vfXl73vl9ddRYb5A==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/utils': 6.2.3(solid-js@1.8.15)
+      solid-js: 1.8.15
+    dev: false
+
   /@solid-primitives/props@3.1.9(solid-js@1.8.15):
     resolution: {integrity: sha512-2MvjgxF0rwMR8BGq2onN9KhxF66bQhtFWdrEkO/qjy8I4wr/OQrhwgM9RP89/gtzOVPXUYKSxt2lkCk+JQpNJA==}
     peerDependencies:
@@ -2181,6 +2193,14 @@ packages:
 
   /@solid-primitives/utils@6.2.2(solid-js@1.8.15):
     resolution: {integrity: sha512-11ypVbp987XxETeRqY5Y3OmmTpm8/jZqJXRvo6AyqBthzkvvjEdReuUMU2yVb+pwWGxfZpWHZ6EUCcGXUMhfwg==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      solid-js: 1.8.15
+    dev: false
+
+  /@solid-primitives/utils@6.2.3(solid-js@1.8.15):
+    resolution: {integrity: sha512-CqAwKb2T5Vi72+rhebSsqNZ9o67buYRdEJrIFzRXz3U59QqezuuxPsyzTSVCacwS5Pf109VRsgCJQoxKRoECZQ==}
     peerDependencies:
       solid-js: ^1.6.12
     dependencies:
