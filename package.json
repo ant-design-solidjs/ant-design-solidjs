@@ -1,0 +1,24 @@
+{
+  "name": "ant-design-x-solidjs",
+  "module": "index.ts",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.10.1",
+    "@types/bun": "latest",
+    "eslint-plugin-solid": "^0.14.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@8.15.5+sha1.a58c038faac410c947dbdb93eb30994037d0fce2",
+  "dependencies": {
+    "@vanilla-extract/vite-plugin": "^5.0.1",
+    "clsx": "^2.1.1",
+    "vite": "^6.2.3",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-solid": "^2.11.6"
+  }
+}

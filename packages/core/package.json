@@ -1,0 +1,74 @@
+{
+  "name": "@ant-design-solidjs/core",
+  "version": "0.0.1.beta-01",
+  "private": false,
+  "type": "module",
+  "sideEffects": false,
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./src/index.tsx",
+      "solid": "./src/index.tsx",
+      "default": "./src/index.tsx"
+    },
+    "./themes/*": "./dist/themes/*",
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "solid": "./dist/*/index.jsx",
+      "default": "./dist/*/index.js"
+    },
+    "./src/*": "./src/*"
+  },
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*/index.d.ts",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "source": "src/index.tsx",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsup",
+    "preview": "vite preview",
+    "generate": "node scripts/generate-theme.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@ant-design-solidjs/icons": "^0.0.0-beta.13",
+    "@ant-design-solidjs/theme": "workspace:*",
+    "@solid-primitives/destructure": "^0.2.0",
+    "@solid-primitives/props": "^3.2.0",
+    "@solid-primitives/refs": "^1.1.0",
+    "@solid-primitives/resize-observer": "^2.1.0",
+    "@solid-primitives/utils": "^6.3.0",
+    "@vanilla-extract/css": "^1.17.1",
+    "@vanilla-extract/css-utils": "^0.1.4",
+    "@vanilla-extract/dynamic": "^2.1.2",
+    "@vanilla-extract/recipes": "^0.5.5",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@vanilla-extract/vite-plugin": "^5.0.1",
+    "esbuild-plugin-solid": "^0.6.0",
+    "tsup": "7.2.0",
+    "typescript": "~5.7.3",
+    "vite": "^6.2.2",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-solid": "^2.11.6"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.8.15"
+  }
+}

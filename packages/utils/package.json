@@ -1,0 +1,19 @@
+{
+  "name": "@ant-design-solidjs/utils",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "type": "module",
+  "version": "0.0.1-beta.4",
+  "scripts": {
+    "build": "vite build"
+  },
+  "files": ["es", "lib"],
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

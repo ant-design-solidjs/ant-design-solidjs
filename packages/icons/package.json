@@ -1,0 +1,48 @@
+{
+  "name": "@ant-design-solidjs/icons",
+  "version": "0.0.0-beta.15",
+  "repository": "https://github.com/ant-design-solidjs/ant-design-icons",
+  "license": "MIT",
+  "contributors": [
+    "zxdstyle<zxdstyle@foxmail.com>"
+  ],
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "es/index.d.ts",
+  "type": "module",
+  "files": ["es", "lib"],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "clean": "./scripts/cleanup.sh",
+    "build": "vite build",
+    "generate": "rimraf src/icons && cross-env NODE_NO_WARNINGS=1 node --loader ts-node/esm scripts/generate.ts --target=icon"
+  },
+  "dependencies": {
+    "@ant-design-solidjs/utils": "v0.0.1-beta.4",
+    "@ant-design/colors": "^7.2.0",
+    "@ant-design/icons-svg": "^4.4.2",
+    "@solid-primitives/refs": "^1.1.0",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.13.10",
+    "cross-env": "^5.2.1",
+    "esbuild-plugin-solid": "^0.6.0",
+    "glob": "^7.2.3",
+    "history": "^4.10.1",
+    "lodash-es": "^4.17.21",
+    "pkg-dir": "^8.0.0",
+    "rimraf": "^3.0.2",
+    "solid-js": "^1.8.15",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "solid-js": ">=1.9.3"
+  }
+}
