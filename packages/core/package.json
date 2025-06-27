@@ -5,23 +5,20 @@
   "type": "module",
   "sideEffects": false,
   "license": "MIT",
-  "exports": {
-    ".": {
-      "types": "./src/index.tsx",
-      "solid": "./src/index.tsx",
-      "default": "./src/index.tsx"
-    },
-    "./themes/*": "./dist/themes/*",
-    "./*": {
-      "types": "./dist/*/index.d.ts",
-      "solid": "./dist/*/index.jsx",
-      "default": "./dist/*/index.js"
-    },
-    "./src/*": "./src/*"
+  "scripts": {
+    "dev": "vite",
+    "build": "tsdown && pnpm run generate",
+    "preview": "vite preview",
+    "generate": "node scripts/generate-theme.js"
   },
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.tsx",
+    "./package.json": "./package.json",
+    "./themes/default.css": "./dist/themes/default.css"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
@@ -35,17 +32,16 @@
     "dist",
     "src"
   ],
-  "scripts": {
-    "dev": "vite",
-    "build": "tsup",
-    "preview": "vite preview",
-    "generate": "node scripts/generate-theme.js"
-  },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "exports": {
+      ".": "./dist/index.js",
+      "./package.json": "./package.json",
+      "./themes/default.css": "./dist/themes/default.css"
+    }
   },
   "dependencies": {
-    "@ant-design-solidjs/icons": "^0.0.0-beta.13",
+    "@ant-design-solidjs/icons": "../icons",
     "@ant-design-solidjs/theme": "workspace:*",
     "@solid-primitives/destructure": "^0.2.0",
     "@solid-primitives/props": "^3.2.0",
@@ -60,13 +56,10 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
-    "@vanilla-extract/vite-plugin": "^5.0.1",
-    "esbuild-plugin-solid": "^0.6.0",
-    "tsup": "7.2.0",
     "typescript": "~5.7.3",
-    "vite": "^6.2.2",
-    "vite-plugin-dts": "^4.5.3",
-    "vite-plugin-solid": "^2.11.6"
+    "vite": "^6.3.5",
+    "vite-plugin-solid": "^2.11.6",
+    "tsdown": "^0.12.9"
   },
   "peerDependencies": {
     "solid-js": "^1.8.15"

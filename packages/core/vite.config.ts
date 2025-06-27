@@ -1,16 +1,12 @@
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin"
 import { defineConfig } from "vite"
-import dts from "vite-plugin-dts"
 import solid from "vite-plugin-solid"
 
 export default defineConfig({
     plugins: [
         solid(),
-        dts({ tsconfigPath: "tsconfig.json", entryRoot: "src" }),
-        vanillaExtractPlugin({ unstable_mode: "emitCss" }),
     ],
     build: {
-        minify: false,
+        minify: true,
         lib: {
             entry: "./src/index.tsx",
         },

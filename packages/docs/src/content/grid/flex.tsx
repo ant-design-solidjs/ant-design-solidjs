@@ -1,5 +1,4 @@
 import { Col, Divider, Row } from "@ant-design-solidjs/core"
-import React from "react"
 
 function App() {
     return (

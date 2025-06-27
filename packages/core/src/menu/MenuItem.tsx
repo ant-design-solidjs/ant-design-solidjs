@@ -49,7 +49,7 @@ export function MenuItem(_props: MenuItemProps) {
     })
 
     const handleClick = (event: MouseEvent) => {
-
+        console.log(event)
     }
 
     return (

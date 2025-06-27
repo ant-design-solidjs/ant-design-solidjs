@@ -11,6 +11,9 @@ export const token = createGlobalThemeContract({
         middle: `${prefix}-control-height`,
         large: `${prefix}-control-height-lg`,
     },
+    control: {
+        interactive: `${prefix}-control-interactive`,
+    },
     size: {
         xxs: `${prefix}-size-xxs`,
         xs: `${prefix}-size-xs`,
@@ -54,6 +57,7 @@ export const token = createGlobalThemeContract({
             tertiary: `${prefix}-color-tertiary`,
             quaternary: `${prefix}-color-quaternary`,
             description: `${prefix}-color-text-description`,
+            disabled: `${prefix}-color-text-disabled`,
         },
         link: {
             default: `${prefix}-color-link`,
@@ -74,13 +78,15 @@ export const token = createGlobalThemeContract({
             },
             layout: `${prefix}-color-bg-layout`,
             container: `${prefix}-color-bg-container`,
+            containerDisabled: `${prefix}-color-bg-container-disabled`,
             elevated: `${prefix}-color-bg-elevated`,
             spotlight: `${prefix}-color-bg-spotlight`,
             blur: `${prefix}-color-bg-blur`,
         },
         border: {
-            default: `${prefix}-color-bg-border`,
-            secondary: `${prefix}-color-bg-border-secondary`,
+            default: `${prefix}-color-border`,
+            bg: `${prefix}-color-border-bg`,
+            secondary: `${prefix}-color-border-secondary`,
         },
         primary: {
             default: `${prefix}-color-primary`,

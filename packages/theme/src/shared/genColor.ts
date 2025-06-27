@@ -138,6 +138,7 @@ export function generateNeutralColorPalettes(bgBaseColor?: string, textBaseColor
         [token.colors.text.tertiary]: getAlphaColor(colorTextBase, 0.45),
         [token.colors.text.quaternary]: getAlphaColor(colorTextBase, 0.25),
         [token.colors.text.description]: token.colors.text.tertiary,
+        [token.colors.text.disabled]: token.colors.text.quaternary,
 
         [token.colors.fill.default]: getAlphaColor(colorTextBase, 0.15),
         [token.colors.fill.secondary]: getAlphaColor(colorTextBase, 0.06),
@@ -150,10 +151,12 @@ export function generateNeutralColorPalettes(bgBaseColor?: string, textBaseColor
 
         [token.colors.bg.layout]: getSolidColor(colorBgBase, 4),
         [token.colors.bg.container]: getSolidColor(colorBgBase, 0),
+        [token.colors.bg.containerDisabled]: token.colors.fill.tertiary,
         [token.colors.bg.elevated]: getSolidColor(colorBgBase, 0),
         [token.colors.bg.spotlight]: getAlphaColor(colorTextBase, 0.85),
         [token.colors.bg.blur]: "transparent",
 
+        [token.colors.border.bg]: token.colors.bg.container,
         [token.colors.border.default]: getSolidColor(colorBgBase, 15),
         [token.colors.border.secondary]: getSolidColor(colorBgBase, 6),
 
